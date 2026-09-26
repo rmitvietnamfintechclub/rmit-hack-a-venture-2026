@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+
+:root {
+  --background: #000000;
+  --foreground: #000000;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #000000;
+    --foreground: #ededed;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  overflow-x: hidden;
+  /* Enables horizontal scrolling */
+  font-family: "Poppins", sans-serif;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+.slick-slide {
+  transition: transform 0.3s ease-in-out;
+  /* Add smooth transition */
+}
+
+.drop-shadow-green-text {
+  filter: drop-shadow(1px 1px 4.2px #00a36c);
+}
+
+.drop-shadow-text {
+  filter: drop-shadow(1px 1px 4.2px #f37d12);
+}
+
+.drop-shadow-club-text {
+  filter: drop-shadow(1px 1px 4.2px #dcb968);
+}
+
+.hover\:drop-shadow-text:hover {
+  filter: drop-shadow(1px 1px 4.2px #f37d12);
+}
+
+.hover\:text-gradient:hover {
+  font-weight: bold;
+  background: linear-gradient(90deg, #f37d12 0%, #fde309 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hover\:drop-shadow-container:hover {
+  filter: drop-shadow(0px 4px 40px #f37d12);
+}
+
+/* this one for the container of the text */
+.drop-shadow-container {
+  filter: drop-shadow(0px 4px 40px #f37d12);
+}
+
+.text-color-gradient {
+  background-image: linear-gradient(to bottom, #f37d12, #fde309);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-green-color-gradient {
+  background-image: linear-gradient(to bottom, #01985c, #2dc6d2);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.judge-card-shape {
+  clip-path: polygon(
+    0 25px,
+    25px 0,
+    100% 0,
+    100% calc(100% - 25px),
+    calc(100% - 25px) 100%,
+    0 100%
+  );
+}
+
+.text-gradient-diamond {
+  background: linear-gradient(180deg, #FFFFFF 0%, #FDE309 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+
+.text-gradient-silver {
+  background: linear-gradient(180deg, #F0F0F0 0%, #BDBDBD 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}

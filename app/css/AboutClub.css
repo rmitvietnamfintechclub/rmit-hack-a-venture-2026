@@ -1,0 +1,28 @@
+.text-clip {
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.slick-dots li button {
+	width: 6px;
+	height: 6px;
+}
+
+/* Change dot colors */
+.slick-dots li button:before {
+	color: #9ca3af;
+}
+
+/* Change dot color when active */
+.slick-dots li.slick-active button:before {
+	color: #F37D12;
+}
+
+.slick-slide div img {
+    opacity: 1; /* Ensure full opacity */
+    filter: none; /* Remove any filters affecting brightness */
+}
+
+.slick-slider::before {
+	content: none; /* Remove overlays if any */
+}
