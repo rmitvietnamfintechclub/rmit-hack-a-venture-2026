@@ -15,6 +15,14 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        brand: {
+          darkRed: "#840602",
+          red: "#bf0701",
+          orange: "#e85102",
+          lightOrange: "#eb7c30",
+          bgDark: "#080303", 
+          bgCard: "#140505",
+        }
       },
       keyframes: {
         slideUpAndFade: {
@@ -43,7 +51,6 @@ const config: Config = {
         slideLeftAndFade:
           "slideLeftAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1)",
       },
-      // --- Hết phần code mới ---
     },
   },
   plugins: [],

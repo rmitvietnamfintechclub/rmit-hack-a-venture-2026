@@ -4,13 +4,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
 
 :root {
-  --background: #000000;
-  --foreground: #000000;
+  --background: #080303;
+  --foreground: #ffffff;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #000000;
+    --background: #080303;
     --foreground: #ededed;
   }
 }
@@ -23,7 +23,6 @@ body {
   color: var(--foreground);
   background: var(--background);
   overflow-x: hidden;
-  /* Enables horizontal scrolling */
   font-family: "Poppins", sans-serif;
 }
 
@@ -35,50 +34,49 @@ body {
 
 .slick-slide {
   transition: transform 0.3s ease-in-out;
-  /* Add smooth transition */
 }
 
 .drop-shadow-green-text {
-  filter: drop-shadow(1px 1px 4.2px #00a36c);
+  filter: drop-shadow(1px 1px 4.2px #bf0701); 
 }
 
 .drop-shadow-text {
-  filter: drop-shadow(1px 1px 4.2px #f37d12);
+  filter: drop-shadow(1px 1px 4.2px #e85102); /* Cam */
 }
 
 .drop-shadow-club-text {
-  filter: drop-shadow(1px 1px 4.2px #dcb968);
+  filter: drop-shadow(1px 1px 4.2px #eb7c30); /* Cam sáng */
 }
 
 .hover\:drop-shadow-text:hover {
-  filter: drop-shadow(1px 1px 4.2px #f37d12);
+  filter: drop-shadow(1px 1px 6px #e85102);
 }
 
 .hover\:text-gradient:hover {
   font-weight: bold;
-  background: linear-gradient(90deg, #f37d12 0%, #fde309 100%);
+  background: linear-gradient(90deg, #bf0701 0%, #eb7c30 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .hover\:drop-shadow-container:hover {
-  filter: drop-shadow(0px 4px 40px #f37d12);
+  filter: drop-shadow(0px 4px 40px rgba(232, 81, 2, 0.5));
 }
 
-/* this one for the container of the text */
 .drop-shadow-container {
-  filter: drop-shadow(0px 4px 40px #f37d12);
+  filter: drop-shadow(0px 4px 40px rgba(191, 7, 1, 0.3));
 }
 
+/* Gradient chữ chính: Từ Đỏ sậm -> Cam sáng */
 .text-color-gradient {
-  background-image: linear-gradient(to bottom, #f37d12, #fde309);
+  background-image: linear-gradient(to bottom, #bf0701, #eb7c30);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
 .text-green-color-gradient {
-  background-image: linear-gradient(to bottom, #01985c, #2dc6d2);
+  background-image: linear-gradient(to bottom, #e85102, #f5a66a);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -96,7 +94,7 @@ body {
 }
 
 .text-gradient-diamond {
-  background: linear-gradient(180deg, #FFFFFF 0%, #FDE309 100%);
+  background: linear-gradient(180deg, #FFFFFF 0%, #eb7c30 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

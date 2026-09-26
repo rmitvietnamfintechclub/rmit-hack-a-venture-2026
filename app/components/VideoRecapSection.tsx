@@ -73,10 +73,9 @@ export const VideoRecapSection = () => {
               >
                 <Image
                   src={`https://i.ytimg.com/vi/${YOUTUBE_VIDEO_ID}/hqdefault.jpg`}
-                  layout="fill"
-                  objectFit="cover"
+                  fill
                   alt="HAV 2024 Recap Thumbnail"
-                  className="transition-transform duration-300 group-hover:scale-105"
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors" />
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
