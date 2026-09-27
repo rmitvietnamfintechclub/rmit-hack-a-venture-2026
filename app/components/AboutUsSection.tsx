@@ -21,10 +21,15 @@ export const AboutUsSection = () => {
         <span className="text-color-gradient font-bold">
           AI, Data Analytics, Blockchain, Distributed Systems, etc.
         </span>{" "}
-        to develop innovative products or solutions that address specific
-        challenges in Vietnam's financial system, while contributing to relevant
-        United Nations Sustainable Development Goals (SDGs). Beyond product
-        development, teams are required to create{" "}
+        to develop innovative products or solutions that{" "}
+        <span className="text-color-gradient font-bold">
+          address specific challenges in Vietnam's financial system
+        </span>
+        , while contributing to{" "}
+        <span className="text-color-gradient font-bold">
+          relevant United Nations Sustainable Development Goals (SDGs)
+        </span>
+        . Beyond product development, teams are required to create{" "}
         <span className="text-color-gradient font-bold">
           a comprehensive business plan
         </span>{" "}
@@ -35,7 +40,8 @@ export const AboutUsSection = () => {
         of their solution, taking into account real-world constraints and{" "}
         <span className="text-color-gradient font-bold">
           regulatory alignment
-        </span>.
+        </span>
+        .
       </div>
 
       <div className="my-[16px] text-gray-300 leading-relaxed text-justify">

@@ -222,7 +222,7 @@ export const PartnerSection = () => {
     <Tooltip.Provider>
       <div
         ref={ref}
-        className="container mx-auto py-4 md:py-8 px-6 md:px-20 text-center"
+        className="container mx-auto max-md:py-4 px-6 md:px-20 text-center"
         id="hackaventure-sponsors"
       >
         <motion.h1

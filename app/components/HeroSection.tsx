@@ -79,7 +79,11 @@ export const HeroSection = () => {
                   Technology
                 </span>{" "}
                 students nationwide, encouraging them to leverage technologies
-                to address real-world challenges in Vietnam’s financial system!
+                to{" "}
+                <span className="font-bold text-color-gradient">
+                  address real-world challenges in Vietnam’s financial system
+                </span>
+                .
               </div>
             </motion.h1>
 
@@ -158,7 +162,10 @@ export const HeroSection = () => {
           <span className="font-bold text-color-gradient">Business</span> and{" "}
           <span className="font-bold text-color-gradient">Technology</span>{" "}
           students nationwide, encouraging them to leverage technologies to
-          address real-world challenges in Vietnam’s financial system!
+          {" "}
+          <span className="font-bold text-color-gradient">
+            address real-world challenges in Vietnam’s financial system
+          </span>.
         </div>
 
         <div className="flex flex-col w-full gap-4 justify-center items-center mt-6 mb-12">
@@ -166,11 +173,7 @@ export const HeroSection = () => {
             className="w-full h-[54px] rounded-full justify-items-center flex justify-center items-center font-semibold font-poppins"
             style={primaryButtonStyle}
           >
-            <a
-              href=""
-              target="_blank"
-              className="flex items-center"
-            >
+            <a href="" target="_blank" className="flex items-center">
               Register Now
               <Image
                 src={"/Arrow.png"}
