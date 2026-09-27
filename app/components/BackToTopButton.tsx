@@ -36,7 +36,7 @@ export const BackToTopButton = () => {
             right: "40px",
             width: "60px",
             height: "60px",
-            background: "linear-gradient(to bottom, #F37D12, #FDE309)", 
+            background: "linear-gradient(to bottom, #bf0701, #e85102)", 
           }}
           onClick={scrollUp}
           className="rounded-full flex justify-center items-center z-50"

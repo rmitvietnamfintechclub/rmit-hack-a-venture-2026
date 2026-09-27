@@ -67,7 +67,7 @@ export const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.5 }}
             >
-              <div className="w-full lg:w-[490px] text-gray-300 text-xl font-medium text-justify">
+              <div className="w-full lg:w-[490px] text-gray-300 leading-relaxed text-xl font-medium text-justify">
                 Organized by RMIT Vietnam FinTech Club,{" "}
                 <span className="font-bold text-color-gradient">
                   Hack-A-Venture
@@ -79,7 +79,7 @@ export const HeroSection = () => {
                   Technology
                 </span>{" "}
                 students nationwide, encouraging them to leverage technologies
-                to solve Vietnam's pressing social challenge!
+                to address real-world challenges in Vietnam’s financial system!
               </div>
             </motion.h1>
 
@@ -89,7 +89,7 @@ export const HeroSection = () => {
                 style={secondaryButtonStyle}
               >
                 <a
-                  href="https://bit.ly/RMITHack-A-Venture2025Handbook"
+                  href="https://canva.link/m8fk2y9xm9lnud9"
                   target="_blank"
                   className="no-underline"
                 >
@@ -101,7 +101,7 @@ export const HeroSection = () => {
                 className="w-[14vw] h-[48px] rounded-full justify-items-center flex justify-center items-center font-semibold font-poppins transition-transform hover:scale-105"
                 style={primaryButtonStyle}
               >
-                <a href="https://forms.gle/RCp2kr5zheyp2Gq2A" target="_blank">
+                <a href="" target="_blank">
                   Register Now
                 </a>
                 <Image
@@ -131,9 +131,7 @@ export const HeroSection = () => {
       {/* MOBILE VIEW */}
       <div className="md:hidden px-6 relative flex flex-col items-center">
         <div className="absolute top-10 left-1/2 transform -translate-x-1/2 w-[250px] h-[250px] bg-[#e85102] rounded-full blur-[100px] opacity-20 -z-10"></div>
-        <motion.div
-          className="relative w-full flex justify-center mt-10"
-        >
+        <motion.div className="relative w-full flex justify-center mt-10">
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[250px] h-[250px] bg-[#bf0701] rounded-full blur-[100px] opacity-40 -z-10"></div>
           <Image
             src={"/graphic1.png"}
@@ -153,14 +151,14 @@ export const HeroSection = () => {
           </h1>
         </div>
 
-        <div className="text-gray-300 text-lg mb-[16px] font-medium text-center mt-[16px]">
+        <div className="text-gray-300 leading-relaxed text-lg mb-[16px] font-medium text-justify mt-[16px]">
           Organized by RMIT Vietnam FinTech Club,{" "}
           <span className="font-bold text-color-gradient">Hack-A-Venture</span>{" "}
           is a hackathon-style innovation competition for{" "}
           <span className="font-bold text-color-gradient">Business</span> and{" "}
           <span className="font-bold text-color-gradient">Technology</span>{" "}
           students nationwide, encouraging them to leverage technologies to
-          solve Vietnam's pressing social challenge!
+          address real-world challenges in Vietnam’s financial system!
         </div>
 
         <div className="flex flex-col w-full gap-4 justify-center items-center mt-6 mb-12">
@@ -169,7 +167,7 @@ export const HeroSection = () => {
             style={primaryButtonStyle}
           >
             <a
-              href="https://forms.gle/RCp2kr5zheyp2Gq2A"
+              href=""
               target="_blank"
               className="flex items-center"
             >
@@ -189,7 +187,7 @@ export const HeroSection = () => {
             style={secondaryButtonStyle}
           >
             <a
-              href="https://bit.ly/RMITHack-A-Venture2025Handbook"
+              href="https://canva.link/m8fk2y9xm9lnud9"
               target="_blank"
               className="no-underline"
             >

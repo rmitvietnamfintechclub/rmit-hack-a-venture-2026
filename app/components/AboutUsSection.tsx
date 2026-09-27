@@ -11,30 +11,43 @@ export const AboutUsSection = () => {
         alt="Hack-A-Venture Key Visual"
         className="w-full h-auto rounded-lg"
       />
-      <div className="mt-[40px] text-center md:text-justify">
-        This competition aims to bridge the gap between technical expertise and
-        business strategy by having students leverage cutting-edge technologies
-        such as{" "}
+      <div className="mt-[40px] text-gray-300 leading-relaxed text-justify">
+        With Vietnam’s rapidly evolving digital economy,{" "}
         <span className="text-color-gradient font-bold">
-          AI, Blockchain, Cybersecurity, etc.
+          Hack-A-Venture 2026
         </span>{" "}
-        to develop innovative products that address challenges related to the
-        United Nations Sustainable Development Goals (SDGs) in Vietnam. Beyond
-        product development, teams are required to create{" "}
+        aims to bridge technical capabilities with market and strategic thinking
+        by having students leverage emerging technologies such as{" "}
+        <span className="text-color-gradient font-bold">
+          AI, Data Analytics, Blockchain, Distributed Systems, etc.
+        </span>{" "}
+        to develop innovative products or solutions that address specific
+        challenges in Vietnam's financial system, while contributing to relevant
+        United Nations Sustainable Development Goals (SDGs). Beyond product
+        development, teams are required to create{" "}
         <span className="text-color-gradient font-bold">
           a comprehensive business plan
         </span>{" "}
         that ensures the{" "}
         <span className="text-color-gradient font-bold">
-          viability, sustainability, and scalability
+          feasibility, scalability, and sustainability
         </span>{" "}
-        of their solution.
+        of their solution, taking into account real-world constraints and{" "}
+        <span className="text-color-gradient font-bold">
+          regulatory alignment
+        </span>.
       </div>
 
-      <div className="my-[16px] text-center md:text-justify">
-        Over multiple rounds, teams will progress through ideation,
-        documentation, technical development, and live demonstration,
-        culminating in a final pitch to a panel of esteemed industry judges.
+      <div className="my-[16px] text-gray-300 leading-relaxed text-justify">
+        Providing a{" "}
+        <span className="text-color-gradient font-bold">
+          startup-like environment
+        </span>
+        , the competition guides teams through multiple rounds of idea proposal,
+        documentation, prototype building, and live demonstration. This journey
+        culminates in a final pitch to a panel of esteemed industry judges,
+        empowering students to develop practical, scalable, and impactful
+        solutions.
       </div>
     </div>
   );

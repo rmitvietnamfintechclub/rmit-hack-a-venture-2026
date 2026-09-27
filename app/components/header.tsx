@@ -28,51 +28,41 @@ const LaptopNav = () => {
             alt="Laptop logo"
           />
         </a>
+
         <a
-          href="/"
+          href="https://canva.link/m8fk2y9xm9lnud9"
+          target="_blank"
           className={`hover:text-[#e85102] text-white font-normal cursor-pointer transition-colors`}
         >
-          <h1>About Hack-A-Venture</h1>
+          Handbook
         </a>
+
         <a
-          href="https://bit.ly/RMITHack-A-Venture2025RulesandRegulations"
+          href="https://canva.link/kxcxqtlug3qsw1c"
           target="_blank"
           className={`hover:text-[#e85102] text-white font-normal cursor-pointer transition-colors`}
         >
           <h1>Rules & Regulations</h1>
         </a>
+
         <a
           className={`hover:text-[#e85102] text-white font-normal cursor-pointer transition-colors`}
           href="#hackaventure-sponsors"
         >
-          <h1>Our Sponsors & Partners</h1>
+          <h1>Sponsors & Partners</h1>
         </a>
       </div>
 
       {/*-----------------------------right side ------------------------*/}
-      <div className="h-full w-[400px] flex justify-start items-center gap-8">
-        <a
-          href="https://bit.ly/RMITHack-A-Venture2025Handbook"
-          target="_blank"
-          className="no-underline font-semibold text-color-gradient"
-        >
-          See Handbook
-        </a>
-        <a
-          href="mailto:rmithackaventure0108@gmail.com"
-          className="no-underline font-semibold text-color-gradient"
-        >
-          Contact Us
-        </a>
+      <div className="h-full w-[400px] flex justify-end items-center gap-8">
         <button
           style={{
-            // Update gradient button 2026: Đỏ -> Cam sáng
             background: "linear-gradient(to right, #bf0701, #e85102)",
-            boxShadow: "0 4px 15px rgba(232, 81, 2, 0.3)"
+            boxShadow: "0 4px 15px rgba(232, 81, 2, 0.3)",
           }}
           className="px-[20px] py-[8px] rounded-full text-white font-semibold transition-transform hover:scale-105"
         >
-          <a href="https://forms.gle/RCp2kr5zheyp2Gq2A" target="_blank">
+          <a href="" target="_blank">
             Register Now
           </a>
         </button>
@@ -118,7 +108,7 @@ const MobileNav = () => {
         className="w-full h-[72px] backdrop-blur-md bg-black/70 border-b-[1px] border-solid border-[#840602]/30 flex justify-between items-center pr-6"
       >
         {/*---------- mobile logo ----------*/}
-        <a className="no-underline block" href="/">
+        <a className="no-underline block ml-6" href="/">
           <img
             className="h-[3rem]"
             src="/hackaventure-logo.png"
@@ -214,15 +204,19 @@ const Navigation = ({
     >
       <motion.ul
         variants={variantsNav}
-        className=" my-[30px] mx-auto w-[90%] flex flex-col gap-[50px]"
+        className=" my-[30px] mx-auto w-[90%] flex flex-col items-center gap-[50px]"
       >
         <motion.li
           variants={variants}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          <a href="/" className={`text-white font-normal cursor-pointer hover:text-[#e85102]`}>
-            <h1>About Hack-A-Venture</h1>
+          <a
+            href="https://canva.link/m8fk2y9xm9lnud9"
+            target="_blank"
+            className={`text-white font-normal cursor-pointer hover:text-[#e85102]`}
+          >
+            <h1>Handbook</h1>
           </a>
         </motion.li>
 
@@ -232,38 +226,11 @@ const Navigation = ({
           whileTap={{ scale: 0.95 }}
         >
           <a
-            href="https://bit.ly/RMITHack-A-Venture2025RulesandRegulations"
+            href="https://canva.link/kxcxqtlug3qsw1c"
             target="_blank"
             className={`text-white font-normal cursor-pointer hover:text-[#e85102]`}
           >
             <h1>Rules & Regulations</h1>
-          </a>
-        </motion.li>
-
-        <motion.li
-          variants={variants}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <a
-            className={`text-white font-normal cursor-pointer hover:text-[#e85102]`}
-            href="#hackaventure-sponsors"
-          >
-            <h1>Our Sponsors & Partners</h1>
-          </a>
-        </motion.li>
-
-        <motion.li
-          variants={variants}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <a
-            href="https://bit.ly/RMITHack-A-Venture2025Handbook"
-            target="_blank"
-            className="no-underline font-semibold text-color-gradient block cursor-pointer"
-          >
-            See Handbook
           </a>
         </motion.li>
 
@@ -291,7 +258,7 @@ const Navigation = ({
             }}
             className="px-[24px] py-[12px] rounded-full text-white font-semibold w-full"
           >
-            <a href="https://forms.gle/RCp2kr5zheyp2Gq2A" target="_blank" className="block w-full">
+            <a href="" target="_blank" className="block w-full">
               Register Now
             </a>
           </button>
