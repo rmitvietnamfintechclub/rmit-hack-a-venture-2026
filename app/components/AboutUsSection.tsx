@@ -27,7 +27,7 @@ export const AboutUsSection = () => {
         </span>
         , while contributing to{" "}
         <span className="text-color-gradient font-bold">
-          relevant United Nations Sustainable Development Goals (SDGs)
+          relevant ESG (Environmental, Social, and Governance) standards
         </span>
         . Beyond product development, teams are required to create{" "}
         <span className="text-color-gradient font-bold">

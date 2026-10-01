@@ -1,181 +1,169 @@
 "use client";
+import React from "react";
+import { motion } from "framer-motion";
 import Image from "next/image";
-import React, { useState, useEffect } from "react"; // 1. Import useEffect
-import { motion, AnimatePresence } from "framer-motion";
+import {
+  IconBrain,
+  IconChartInfographic,
+  IconCurrencyBitcoin,
+  IconNetwork,
+} from "@tabler/icons-react";
 
-const themeData = [
+const techData = [
   {
-    id: "0",
-    type: "theme",
-    iconSrc: "/green-footprint.png",
-    alt: "green",
-    text: "Open Innovation for a Green Vietnam",
-    imageSrc: "/ThemeGreen.png",
+    id: "tech-1",
+    icon: <IconBrain size={42} stroke={1.5} className="text-[#e85102]" />,
+    title: "Artificial Intelligence",
   },
   {
-    id: "1",
-    type: "tech",
-    iconSrc: "/smart_toy.png",
-    alt: "AI",
-    text: "Artificial Intelligence",
-    imageSrc: "/ArtificialIntelligence.png",
+    id: "tech-2",
+    icon: (
+      <IconChartInfographic size={42} stroke={1.5} className="text-[#bf0701]" />
+    ),
+    title: "Data Analytics",
   },
   {
-    id: "2",
-    type: "tech",
-    iconSrc: "/currency_bitcoin.png",
-    alt: "bitcoin",
-    text: "Blockchain Technology",
-    imageSrc: "/BlockchainTechnology.png",
+    id: "tech-3",
+    icon: (
+      <IconCurrencyBitcoin size={42} stroke={1.5} className="text-[#e85102]" />
+    ),
+    title: "Blockchain Technology",
   },
   {
-    id: "3",
-    type: "tech",
-    iconSrc: "/encrypted.png",
-    alt: "encrypted",
-    text: "Cybersecurity Technology",
-    imageSrc: "/CybersecurityTechnology.png",
+    id: "tech-4",
+    icon: <IconNetwork size={42} stroke={1.5} className="text-[#bf0701]" />,
+    title: "Distributed Systems",
   },
 ];
 
-type ThemeItemProps = {
-  item: {
-    id: string;
-    type: string;
-    iconSrc: string;
-    alt: string;
-    text: string;
-    imageSrc: string;
-  };
-  selectedId: string;
-  setSelectedId: (id: string) => void;
-};
-
-const ThemeItem: React.FC<ThemeItemProps> = ({
-  item,
-  selectedId,
-  setSelectedId,
-}) => (
-  <div className="flex flex-row items-center gap-11 my-auto max-md:border-[1px] max-md:border-[#374151] max-md:rounded-lg max-md:p-4">
-    <Image
-      className="w-[30px] h-[30px]"
-      src={item.iconSrc}
-      alt={item.alt}
-      width={20}
-      height={20}
-    />
-    <div
-      className={`drop-shadow-container hover:cursor-pointer hover:text-color-gradient ${
-        selectedId === item.id ? "drop-shadow-text" : ""
-      }`}
-      onClick={() => setSelectedId(item.id)}
-    >
-      <div
-        className={`text-[1.5rem] font-semibold ${
-          selectedId === item.id
-            ? item.id === "0"
-              ? "text-[#91DAAE]"
-              : "text-color-gradient"
-            : "text-white"
-        }`}
-      >
-        {item.text}
-      </div>
-    </div>
-  </div>
-);
-
 export const ThemeSection = () => {
-  const [selectedId, setSelectedId] = useState("0");
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.15 },
+    },
+  };
 
-  // Add useEffect to automate the animation
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setSelectedId((prevId) => {
-        const nextId = (parseInt(prevId, 10) + 1) % themeData.length;
-        return nextId.toString();
-      });
-    }, 5000); // Change item every 3 seconds
-
-    // Cleanup interval on component unmount
-    return () => clearInterval(interval);
-  }, []); // Empty dependency array ensures this runs only once on mount
-
-  const selectedItem = themeData.find((item) => item.id === selectedId);
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  };
 
   return (
-    <div className="md:px-20 md:pb-[20px] w-full max-md:px-6 max-md:pt-[30px]">
-      <div className="md:grid md:grid-cols-10 w-full md:pt-[80px]">
-        <div className="md:col-span-5 w-full h-full">
-          <div className="drop-shadow-container">
-            <h1 className="text-green-color-gradient md:text-6xl pb-4 max-md:text-3xl font-bold drop-shadow-green-text">
-              Our Theme
-            </h1>
-          </div>
+    <div className="md:px-20 w-full max-md:px-6 max-md:pt-[30px] relative my-16 md:my-20">
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        className="w-full flex flex-col items-center gap-10 md:gap-12"
+      >
+        {/* --- KHỐI 1: THE THEME --- */}
+        <div className="w-full flex flex-col items-center">
+          <motion.div
+            variants={itemVariants}
+            className="max-md:text-4xl md:text-6xl text-center text-white font-bold drop-shadow-[0_0_15px_rgba(255,255,255,0.3)] mb-8 md:mb-12"
+          >
+            Our{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#e85102] to-[#bf0701] drop-shadow-[0_0_20px_rgba(232,81,2,0.8)]">
+              Theme
+            </span>
+          </motion.div>
 
-          <ThemeItem
-            item={themeData[0]}
-            selectedId={selectedId}
-            setSelectedId={setSelectedId}
-          />
+          <motion.div variants={itemVariants} className="w-full">
+            <div className="relative w-full rounded-3xl overflow-hidden border border-[#bf0701]/40 bg-[#080303]/80 backdrop-blur-md p-6 md:p-10 shadow-[0_0_40px_rgba(191,7,1,0.15)] group transition-all duration-500 hover:shadow-[0_0_60px_rgba(232,81,2,0.25)] hover:border-[#e85102]/60">
+              <div className="relative z-10 flex flex-col md:flex-row gap-6 md:gap-8 items-center md:items-start text-center md:text-left">
+                {/* Icon Container */}
+                <div className="shrink-0 p-4 md:p-5 bg-gradient-to-br from-[#240a0a] to-[#140505] rounded-2xl border border-[#bf0701]/30 shadow-inner group-hover:scale-105 transition-transform duration-500">
+                  <Image
+                    src="/sustainable-finance.png"
+                    alt="Theme Icon"
+                    width={60}
+                    height={60}
+                    className="w-[40px] h-[40px] md:w-[50px] md:h-[50px] object-contain drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]"
+                  />
+                </div>
 
-          <div className="drop-shadow-container mt-8">
-            <h1 className="text-color-gradient md:text-6xl max-md:text-3xl font-bold drop-shadow-text">
-              Our Tech Focus
-            </h1>
-          </div>
-          <h3 className="md:mt-4 text-lg text-white font-medium max-md:mt-[16px]">
-            Participants are encouraged to explore and leverage any technology
-            of their choice, including but not limited to:
-          </h3>
+                {/* Text Container */}
+                <div className="flex-1 flex flex-col justify-center">
+                  <h1 className="text-2xl md:text-4xl font-extrabold text-white md:leading-normal drop-shadow-lg">
+                    Open Innovation for a Resilient and Sustainable Financial
+                    System in Vietnam
+                  </h1>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
 
-          <div className="grid grid-rows-3 md:mt-[25px] md:gap-[20px] max-md:mt-[25px] max-md:gap-[10px]">
-            {themeData
-              .filter((item) => item.type === "tech")
-              .map((item) => (
-                <ThemeItem
-                  key={item.id}
-                  item={item}
-                  selectedId={selectedId}
-                  setSelectedId={setSelectedId}
-                />
-              ))}
+        {/* --- KHỐI 2: TECH FOCUS --- */}
+        <div className="w-full flex flex-col items-center">
+          <motion.div
+            variants={itemVariants}
+            className="max-md:text-4xl md:text-6xl text-center text-white font-bold drop-shadow-[0_0_15px_rgba(255,255,255,0.3)] mb-4 md:mb-6 mt-8 md:mt-10"
+          >
+            Our{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#e85102] to-[#bf0701] drop-shadow-[0_0_20px_rgba(232,81,2,0.8)]">
+              Tech Focus
+            </span>
+          </motion.div>
+
+          <motion.p 
+            variants={itemVariants}
+            className="text-gray-300 text-lg md:text-xl font-medium text-center max-w-3xl mb-8 md:mb-12 px-4"
+          >
+            Participants are encouraged to explore and leverage any technology of their choice, including but not limited to:
+          </motion.p>
+
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 w-full">
+            {techData.map((tech) => (
+              <motion.div
+                key={tech.id}
+                variants={itemVariants}
+                whileHover={{ y: -8, scale: 1.02 }}
+                transition={{ duration: 0.3 }}
+                className="flex flex-col items-center justify-center text-center p-6 md:p-8 lg:p-10 rounded-3xl bg-[#0a0202]/90 backdrop-blur-sm border border-[#bf0701]/30 shadow-[0_15px_30px_rgba(0,0,0,0.6)] hover:border-[#e85102] hover:bg-gradient-to-t hover:from-[#bf0701]/10 hover:to-[#0a0202] group"
+              >
+                {/* Icon Wrapper */}
+                <div className="w-[80px] h-[80px] md:w-[100px] md:h-[100px] mb-6 rounded-[2rem] bg-[#140505] border border-[#bf0701]/30 flex items-center justify-center group-hover:shadow-[0_0_20px_rgba(232,81,2,0.4)] transition-all duration-300">
+                  <div className="drop-shadow-[0_0_8px_rgba(232,81,2,0.6)]">
+                    {tech.icon}
+                  </div>
+                </div>
+
+                {/* Text Wrapper */}
+                <h3 className="text-lg md:text-xl lg:text-2xl font-bold text-gray-200 group-hover:text-white transition-colors duration-300 leading-tight">
+                  {tech.title}
+                </h3>
+              </motion.div>
+            ))}
           </div>
         </div>
 
-        <div className="md:col-span-5 object-cover max-md:hidden md:w-[28rem] ml-auto">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={selectedItem?.id || "default"}
-              initial={{ opacity: 0, y: 100 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -100 }}
-              transition={{ duration: 0.5 }}
-            >
-              <Image
-                className="object-cover rounded-[2rem]"
-                src={selectedItem?.imageSrc || "/ThemeGreen.png"}
-                alt={selectedItem?.alt || "theme"}
-                width={1000}
-                height={1000}
-              />
-            </motion.div>
-          </AnimatePresence>
-        </div>
-      </div>
-      <div className="md:py-[20px] mt-[30px]">
-        <span className="text-white text-lg max-md:text-center md:text-justify md:text-xl font-medium">
-          These technologies will be used to develop innovative solutions to
-          address social challenges within Vietnam. The specific social issues
-          related to{" "}
-          <span className="font-bold text-color-gradient">
-            Sustainable Development Goals (SDGs)
-          </span>{" "}
-          will be revealed at the start of Round 1. Teams will be challenged to
-          create solutions that are not only technologically sound but also
-          practical and scalable in real-world scenarios.
-        </span>
-      </div>
+        {/* --- KHỐI 3: FOOTER TEXT (ESG) --- */}
+        <motion.div variants={itemVariants} className="w-full">
+          <p className="text-gray-300 text-lg md:text-xl max-md:text-center md:text-justify font-medium leading-relaxed">
+            These technologies will be used to develop products or solutions
+            that contribute to{" "}
+            <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#e85102] to-[#bf0701]">
+              specific challenges in the Financial System of Vietnam
+            </span>
+            , while aligning with relevant{" "}
+            <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#e85102] to-[#bf0701]">
+              ESG (Environmental, Social, Governance) standards
+            </span>
+            . Specific challenges will be revealed at the start of Round 1.
+            Teams are expected to create solutions that are not only
+            technologically advanced but also highly feasible and impactful in
+            the real market.
+          </p>
+        </motion.div>
+      </motion.div>
     </div>
   );
 };

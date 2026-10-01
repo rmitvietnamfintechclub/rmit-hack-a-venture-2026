@@ -102,19 +102,26 @@ export const HeroSection = () => {
               </button>
 
               <button
-                className="w-[14vw] h-[48px] rounded-full justify-items-center flex justify-center items-center font-semibold font-poppins transition-transform hover:scale-105"
+                className="w-[14vw] h-[48px] rounded-full justify-items-center flex justify-center items-center gap-2 font-semibold font-poppins transition-transform hover:scale-105"
                 style={primaryButtonStyle}
               >
                 <a href="" target="_blank">
                   Register Now
                 </a>
-                <Image
-                  src={"/Arrow.png"}
-                  alt="arrow"
-                  width={1000}
-                  height={1000}
-                  className="ml-[8px] w-[16px] h-auto -rotate-45 brightness-0 invert"
-                />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-4 w-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={3}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M14 5l7 7m0 0l-7 7m7-7H3"
+                  />
+                </svg>
               </button>
             </div>
           </div>
@@ -161,11 +168,11 @@ export const HeroSection = () => {
           is a hackathon-style innovation competition for{" "}
           <span className="font-bold text-color-gradient">Business</span> and{" "}
           <span className="font-bold text-color-gradient">Technology</span>{" "}
-          students nationwide, encouraging them to leverage technologies to
-          {" "}
+          students nationwide, encouraging them to leverage technologies to{" "}
           <span className="font-bold text-color-gradient">
             address real-world challenges in Vietnam’s financial system
-          </span>.
+          </span>
+          .
         </div>
 
         <div className="flex flex-col w-full gap-4 justify-center items-center mt-6 mb-12">
@@ -173,15 +180,22 @@ export const HeroSection = () => {
             className="w-full h-[54px] rounded-full justify-items-center flex justify-center items-center font-semibold font-poppins"
             style={primaryButtonStyle}
           >
-            <a href="" target="_blank" className="flex items-center">
+            <a href="" target="_blank" className="flex items-center gap-2">
               Register Now
-              <Image
-                src={"/Arrow.png"}
-                alt="arrow"
-                width={1000}
-                height={1000}
-                className="ml-[8px] w-[16px] h-auto -rotate-45 brightness-0 invert"
-              />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-4 w-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={3}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M14 5l7 7m0 0l-7 7m7-7H3"
+                />
+              </svg>
             </a>
           </button>
 

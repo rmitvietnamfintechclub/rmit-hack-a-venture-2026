@@ -204,7 +204,7 @@ export const VideoRecapSection = () => {
                   wasn’t just a competition, it was the spark that started it
                   all. Over the two-month journey, more than 80 teams across the
                   country stepped up, with the Top 10 reaching the grand finale.
-                  Together, they turned raw, ambitious ideas into tech-driven
+                  Together, they turned raw, ambitious ideas into technology-driven
                   solutions for a sustainable Vietnam, proving that sharp
                   business acumen and technological innovation can truly go hand
                   in hand.

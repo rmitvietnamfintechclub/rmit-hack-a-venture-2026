@@ -90,29 +90,18 @@ export const WhoSection = () => {
         animate={controls}
         variants={swipeVariants}
         transition={{ duration: 1.3, delay: 1.8 }}
+        className="w-full flex justify-center mt-8 md:mt-12"
       >
-        <p className="text-xl items-center justify-center text-justify font-medium text-white md:mt-[48px] max-md:hidden">
-          Our competition is open for{" "}
+        <p className="text-lg md:text-xl font-medium text-center md:text-justify text-gray-300 leading-relaxed">
+          Our competition is open to{" "}
           <span className="text-color-gradient font-bold">
             all inspiring students
           </span>{" "}
-          who want to experiment building social impact products using
-          Technology. Anyone can join, but our core target student group are the
-          above.
-        </p>
-      </motion.div>
-      <motion.div
-        initial="hidden"
-        animate={controls}
-        variants={swipeVariants}
-        transition={{ duration: 1.3, delay: 0 }}
-      >
-        <p className="text-lg font-medium items-center justify-center text-center text-white max-md:mt-[32px] md:hidden">
-          Our competition is open for{" "}
-          <span className="text-color-gradient">all inspiring students</span>{" "}
-          who want to experiment building social impact products using
-          Technology. Anyone can join, but our core target student group are the
-          above.
+          who are passionate about driving innovation. While we welcome
+          participants from any academic background, our core target audiences
+          are the above. If you want to experiment with building technology-driven
+          solutions to tackle real-world financial and sustainability
+          challenges, this playground is for you.
         </p>
       </motion.div>
     </div>

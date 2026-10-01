@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
+import { IconArrowUpRight } from "@tabler/icons-react";
 
 export const Header = () => {
   return (
@@ -12,58 +13,94 @@ export const Header = () => {
 };
 
 const LaptopNav = () => {
-  const [hoverItemNumber, setHoverItemNumber] = useState(-1);
-
   return (
     <nav
       id="header"
-      className="px-20 sticky z-50 top-0 w-full h-[72px] backdrop-blur-md bg-black/70 border-b-[1px] border-solid border-[#840602]/30 text-[14px] hidden lg:flex justify-between items-center gap-[80px]"
+      className="px-10 lg:px-20 sticky z-50 top-0 w-full h-[80px] bg-[#050101]/95 backdrop-blur-md border-b border-[#bf0701]/20 shadow-[0_4px_30px_rgba(0,0,0,0.5)] text-[15px] hidden lg:flex justify-between items-center transition-all duration-300"
     >
-      {/*-----------------------------left side ------------------------*/}
-      <div className="h-[100%] w-[650px] flex justify-between items-center">
-        <a className="no-underline block" href="/">
+      {/*----------------------------- Left Side: Logo & Links ------------------------*/}
+      <div className="flex items-center gap-[60px] xl:gap-[80px]">
+        <a className="no-underline block shrink-0" href="/">
           <img
-            className="w-auto h-[3rem]"
+            className="w-auto h-[3.5rem] transition-transform duration-300 hover:scale-105"
             src="/hackaventure-logo.png"
-            alt="Laptop logo"
+            alt="Hack-A-Venture Logo"
           />
         </a>
 
-        <a
-          href="https://canva.link/m8fk2y9xm9lnud9"
-          target="_blank"
-          className={`hover:text-[#e85102] text-white font-normal cursor-pointer transition-colors`}
-        >
-          Handbook
-        </a>
+        <div className="flex items-center gap-8 xl:gap-12 font-medium tracking-wide">
+          <a
+            href="https://canva.link/m8fk2y9xm9lnud9"
+            target="_blank"
+            className="relative group flex items-center text-gray-200 hover:text-white transition-colors duration-300"
+          >
+            Handbook
+            {/* Thay thế Arrow.png bằng IconArrowUpRight */}
+            <IconArrowUpRight 
+              size={18} 
+              stroke={2.5} 
+              className="ml-1 opacity-70 group-hover:opacity-100 group-hover:-translate-y-[2px] group-hover:translate-x-[2px] transition-all duration-300" 
+            />
+            <span className="absolute -bottom-2 left-0 w-0 h-[2px] bg-gradient-to-r from-[#bf0701] to-[#e85102] transition-all duration-300 group-hover:w-full"></span>
+          </a>
 
-        <a
-          href="https://canva.link/kxcxqtlug3qsw1c"
-          target="_blank"
-          className={`hover:text-[#e85102] text-white font-normal cursor-pointer transition-colors`}
-        >
-          <h1>Rules & Regulations</h1>
-        </a>
+          <a
+            href="https://canva.link/kxcxqtlug3qsw1c"
+            target="_blank"
+            className="relative group flex items-center text-gray-200 hover:text-white transition-colors duration-300"
+          >
+            Rules & Regulations
+            <IconArrowUpRight 
+              size={18} 
+              stroke={2.5} 
+              className="ml-1 opacity-70 group-hover:opacity-100 group-hover:-translate-y-[2px] group-hover:translate-x-[2px] transition-all duration-300" 
+            />
+            <span className="absolute -bottom-2 left-0 w-0 h-[2px] bg-gradient-to-r from-[#bf0701] to-[#e85102] transition-all duration-300 group-hover:w-full"></span>
+          </a>
 
-        <a
-          className={`hover:text-[#e85102] text-white font-normal cursor-pointer transition-colors`}
-          href="#hackaventure-sponsors"
-        >
-          <h1>Sponsors & Partners</h1>
-        </a>
+          <a
+            href="#hackaventure-sponsors"
+            className="relative group text-gray-200 hover:text-white transition-colors duration-300"
+          >
+            Sponsors & Partners
+            <span className="absolute -bottom-2 left-0 w-0 h-[2px] bg-gradient-to-r from-[#bf0701] to-[#e85102] transition-all duration-300 group-hover:w-full"></span>
+          </a>
+
+          <a
+            href="#footer"
+            className="relative group text-gray-200 hover:text-white transition-colors duration-300"
+          >
+            Contact Us
+            <span className="absolute -bottom-2 left-0 w-0 h-[2px] bg-gradient-to-r from-[#bf0701] to-[#e85102] transition-all duration-300 group-hover:w-full"></span>
+          </a>
+        </div>
       </div>
 
-      {/*-----------------------------right side ------------------------*/}
-      <div className="h-full w-[400px] flex justify-end items-center gap-8">
+      {/*----------------------------- Right Side: CTA Button ------------------------*/}
+      <div className="flex justify-end items-center gap-6 shrink-0">
         <button
           style={{
             background: "linear-gradient(to right, #bf0701, #e85102)",
-            boxShadow: "0 4px 15px rgba(232, 81, 2, 0.3)",
+            boxShadow: "0 4px 20px rgba(232, 81, 2, 0.4)",
           }}
-          className="px-[20px] py-[8px] rounded-full text-white font-semibold transition-transform hover:scale-105"
+          className="px-[28px] py-[10px] rounded-full text-white font-bold tracking-wide transition-all duration-300 hover:scale-105 hover:shadow-[0_6px_25px_rgba(232,81,2,0.6)]"
         >
-          <a href="" target="_blank">
+          <a href="" target="_blank" className="flex items-center gap-2">
             Register Now
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-4 w-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={3}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M14 5l7 7m0 0l-7 7m7-7H3"
+              />
+            </svg>
           </a>
         </button>
       </div>
@@ -214,9 +251,10 @@ const Navigation = ({
           <a
             href="https://canva.link/m8fk2y9xm9lnud9"
             target="_blank"
-            className={`text-white font-normal cursor-pointer hover:text-[#e85102]`}
+            className="flex items-center text-gray-200 hover:text-[#e85102] transition-colors"
           >
-            <h1>Handbook</h1>
+            Handbook
+            <IconArrowUpRight size={22} stroke={2.5} className="ml-1 opacity-80" />
           </a>
         </motion.li>
 
@@ -228,9 +266,10 @@ const Navigation = ({
           <a
             href="https://canva.link/kxcxqtlug3qsw1c"
             target="_blank"
-            className={`text-white font-normal cursor-pointer hover:text-[#e85102]`}
+            className="flex items-center text-gray-200 hover:text-[#e85102] transition-colors"
           >
-            <h1>Rules & Regulations</h1>
+            Rules & Regulations
+            <IconArrowUpRight size={22} stroke={2.5} className="ml-1 opacity-80" />
           </a>
         </motion.li>
 
@@ -240,7 +279,7 @@ const Navigation = ({
           whileTap={{ scale: 0.95 }}
         >
           <a
-            href="mailto:rmithackaventure0108@gmail.com"
+            href="#footer"
             className="no-underline font-semibold text-color-gradient block cursor-pointer"
           >
             Contact Us
@@ -251,15 +290,35 @@ const Navigation = ({
           variants={variants}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
+          className="w-full mt-4"
         >
           <button
             style={{
               background: "linear-gradient(to right, #bf0701, #e85102)",
+              boxShadow: "0 4px 15px rgba(232, 81, 2, 0.3)",
             }}
-            className="px-[24px] py-[12px] rounded-full text-white font-semibold w-full"
+            className="px-[24px] py-[14px] rounded-full text-white font-bold w-full max-w-[300px] mx-auto block"
           >
-            <a href="" target="_blank" className="block w-full">
+            <a
+              href=""
+              target="_blank"
+              className="flex items-center justify-center gap-2 w-full"
+            >
               Register Now
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={3}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M14 5l7 7m0 0l-7 7m7-7H3"
+                />
+              </svg>
             </a>
           </button>
         </motion.li>
