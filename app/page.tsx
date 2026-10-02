@@ -18,7 +18,7 @@ import { VideoRecapSection } from "./components/VideoRecapSection";
 
 export default function Home() {
   return (
-    <div>
+   <main className="relative w-full max-w-[100vw] overflow-x-hidden">
       {/* --- Chapter 1: The HOOK (What is this & Why is it credible?) --- */}
       <Header />
       <HeroSection />
@@ -41,6 +41,6 @@ export default function Home() {
       {/* --- Utilities & Closing --- */}
       <BackToTopButton />
       <Footer />
-    </div>
+    </main>
   );
 }
