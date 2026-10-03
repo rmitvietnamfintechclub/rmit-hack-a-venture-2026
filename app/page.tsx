@@ -8,7 +8,6 @@ import { HeroSection } from "./components/HeroSection";
 import { JudgeSection } from "./components/JudgeSection";
 import { MentorSection } from "./components/MentorSection";
 import { PrizeSection } from "./components/PrizeSection";
-import { SponsoredPrizeSection } from "./components/SponsoredPrizeSection";
 import { ThemeSection } from "./components/ThemeSection";
 import { WhoSection } from "./components/WhoSection";
 import { TimelineSection } from "./components/TimelineSection";
@@ -18,7 +17,7 @@ import { VideoRecapSection } from "./components/VideoRecapSection";
 
 export default function Home() {
   return (
-   <main className="relative w-full max-w-[100vw] overflow-x-hidden">
+   <main className="relative w-full max-w-[100vw] overflow-x-hidden pt-[75px]">
       {/* --- Chapter 1: The HOOK (What is this & Why is it credible?) --- */}
       <Header />
       <HeroSection />
@@ -28,13 +27,12 @@ export default function Home() {
       <AboutClub />
       {/* --- Chapter 3: The MOTIVATION (Urgency & More Credibility) --- */}
       <Countdown date={"2026-11-01T23:59:00"} />
-      {/* <PartnerSection /> */}
       {/* --- Chapter 4: The DETAILS (For interested participants) --- */}
       <WhoSection />
       <ThemeSection />
       <TimelineSection />
       <PrizeSection />
-      <SponsoredPrizeSection />
+      <PartnerSection />
       <JudgeSection />
       <MentorSection />
       <AcademicMentor />

@@ -1,194 +1,16 @@
 "use client";
-
 import React, { useEffect } from "react";
-import Image from "next/image";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import clsx from "clsx";
-import { IconExternalLink } from "@tabler/icons-react";
-import * as Tooltip from "@radix-ui/react-tooltip";
+import { IconHeartHandshake, IconSparkles } from "@tabler/icons-react";
 
-// --- Data for all sponsors, organized by tier ---
-const sponsorsData = {
-  diamond: [
-    {
-      name: "U2U Network",
-      logoUrl: "/partners/u2u-network.png",
-      bgClass: "bg-white",
-    },
-    {
-      name: "NEAX",
-      logoUrl: "/partners/neax-New.png",
-    },
-  ],
-  silver: [
-    {
-      name: "Student Council",
-      logoUrl: "/partners/student-council-New.png",
-    },
-    {
-      name: "FPTS",
-      logoUrl: "/partners/fpts.png",
-    },
-    {
-      name: "MOORE AISC",
-      logoUrl: "/partners/moore-aisc.png",
-    },
-    {
-      name: "Aptos",
-      logoUrl: "/partners/aptos.png",
-      bgClass: "bg-white",
-    },
-  ],
-  strategic: [
-    {
-      name: "Chainlink",
-      logoUrl: "/partners/chainlink.png",
-    },
-    {
-      name: "AGYRA",
-      logoUrl: "/partners/agyra.png",
-    },
-  ],
-  academic: [
-    {
-      name: "Aptech",
-      logoUrl: "/partners/aptech.png",
-    },
-    {
-      name: "UniTrain",
-      logoUrl: "/partners/unitrain.png",
-    },
-    {
-      name: "Big-O Coding",
-      logoUrl: "/partners/bigo.png",
-    },
-    {
-      name: "SAPP Academy",
-      logoUrl: "/partners/sapp.png",
-    },
-  ],
-  fb: [
-    {
-      name: "ÂME Café & Brunch",
-      logoUrl: "/partners/âme.png",
-    },
-  ],
-  livestream: [
-    {
-      name: "Saigonlive",
-      logoUrl: "/partners/saigonlive.png",
-      href: "https://saigonlive.vn",
-      tooltipText: "Visit Saigonlive.vn",
-    },
-  ],
-};
-
-// --- Reusable Sponsor Card Component ---
-const SponsorCard = ({
-  logoUrl,
-  name,
-  className,
-  bgClass,
-  href,
-  tooltipText,
-}: {
-  logoUrl: string;
-  name: string;
-  className?: string;
-  bgClass?: string;
-  href?: string;
-  tooltipText?: string;
-}) => {
-  const CardContent = (
-    <>
-      <Image
-        src={logoUrl}
-        alt={`${name} Logo`}
-        width={200}
-        height={120}
-        className={clsx(
-          "object-contain w-full h-auto max-h-[100px] p-2 rounded-md",
-          bgClass ? bgClass : "bg-[#F9FAFB]"
-        )}
-      />
-      <div className="absolute -inset-px rounded-xl border border-transparent group-hover:border-yellow-400/50 transition-all duration-300" />
-
-      {href && (
-        <div className="absolute top-2.5 right-2.5 p-1 rounded-full bg-black/20">
-          <IconExternalLink size={16} className="text-white" />
-        </div>
-      )}
-    </>
-  );
-
-  if (href && tooltipText) {
-    return (
-      <Tooltip.Root delayDuration={200}>
-        <Tooltip.Trigger asChild>
-          <a
-            href={href}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`Visit ${name} website (opens in a new tab)`}
-            className={clsx(
-              "relative group w-full h-full flex items-center justify-center p-4 md:p-6 rounded-xl bg-white/5 backdrop-blur-sm transition-all duration-300 hover:bg-white/10 hover:scale-105",
-              className
-            )}
-          >
-            {CardContent}
-          </a>
-        </Tooltip.Trigger>
-        <Tooltip.Portal>
-          <Tooltip.Content
-            className="data-[state=delayed-open]:data-[side=top]:animate-slideDownAndFade data-[state=delayed-open]:data-[side=right]:animate-slideLeftAndFade data-[state=delayed-open]:data-[side=left]:animate-slideRightAndFade data-[state=delayed-open]:data-[side=bottom]:animate-slideUpAndFade select-none rounded-md px-[15px] py-[10px] text-[15px] leading-none shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] will-change-[transform,opacity] bg-gray-800 text-white text-sm"
-            sideOffset={5}
-          >
-            {tooltipText}
-            <Tooltip.Arrow className="fill-gray-800" />
-          </Tooltip.Content>
-        </Tooltip.Portal>
-      </Tooltip.Root>
-    );
-  }
-
-  if (href) {
-    return (
-      <a
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={`Visit ${name} website (opens in a new tab)`}
-        className={clsx(
-          "relative group w-full h-full flex items-center justify-center p-4 md:p-6 rounded-xl bg-white/5 backdrop-blur-sm transition-all duration-300 hover:bg-white/10 hover:scale-105",
-          className
-        )}
-      >
-        {CardContent}
-      </a>
-    );
-  }
-
-  // Mặc định: render card dưới dạng thẻ <div>
-  return (
-    <div
-      className={clsx(
-        "relative group w-full h-full flex items-center justify-center p-4 md:p-6 rounded-xl bg-white/5 backdrop-blur-sm transition-all duration-300 hover:bg-white/10 hover:scale-105",
-        className
-      )}
-    >
-      {CardContent}
-    </div>
-  );
-};
-
-// --- Main Section Component ---
 export const PartnerSection = () => {
-  const controls = useAnimation();
   const { ref, inView } = useInView({
     triggerOnce: true,
-    threshold: 0.1,
+    threshold: 0.2,
   });
+
+  const controls = useAnimation();
 
   useEffect(() => {
     if (inView) {
@@ -196,137 +18,79 @@ export const PartnerSection = () => {
     }
   }, [controls, inView]);
 
-  const containerVariants = {
-    hidden: {},
-    visible: {
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
+  const variants = {
+    hidden: { opacity: 0, y: 40 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-      },
+      transition: { duration: 0.8, ease: "easeOut" },
     },
   };
 
   return (
-    // <-- Quan trọng: Bọc toàn bộ section trong Tooltip.Provider -->
-    <Tooltip.Provider>
-      <div
-        ref={ref}
-        className="container mx-auto max-md:py-4 px-6 md:px-20 text-center"
-        id="hackaventure-sponsors"
-      >
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="max-md:text-4xl md:text-6xl text-white font-semibold mb-8 md:mb-12 drop-shadow-text"
-        >
+    <div
+      id="hackaventure-sponsors"
+      ref={ref}
+      className="w-full flex flex-col items-center mt-16 md:mt-20 md:px-20 max-md:px-6"
+    >
+      {/* --- HEADING SECTION --- */}
+      <motion.div animate={controls} initial="hidden" variants={variants}>
+        <h1 className="max-md:text-4xl md:text-6xl text-center text-white font-bold drop-shadow-text mb-8 md:mb-12">
           Hack-A-Venture <span className="text-color-gradient">Sponsors</span>
-        </motion.h1>
+        </h1>
+      </motion.div>
 
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate={controls}
-          className="space-y-4 md:space-y-16"
+      {/* --- STAY TUNED CONTAINER --- */}
+      <motion.div
+        animate={controls}
+        initial="hidden"
+        variants={variants}
+        className="w-full relative"
+      >
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[90%] h-[90%] bg-[#bf0701] rounded-full blur-[120px] opacity-20 -z-10 animate-pulse"></div>
+
+        {/* Viền Gradient bên ngoài */}
+        <div
+          className="relative p-[2px] rounded-[2rem] w-full mx-auto shadow-[0_15px_40px_rgba(191,7,1,0.2)] group transition-transform duration-500 hover:scale-[1.02]"
+          style={{
+            background:
+              "linear-gradient(135deg, #0a0202 0%, #bf0701 50%, #e85102 100%)",
+          }}
         >
-          {/* Diamond Sponsor */}
-          <motion.div variants={itemVariants}>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 md:mb-8 text-gradient-diamond drop-shadow-text tracking-wider">
-              Diamond Sponsors
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
-              {sponsorsData.diamond.map((sponsor) => (
-                <div key={sponsor.name} className="w-full max-w-sm md:max-w-md">
-                  <SponsorCard {...sponsor} />
-                </div>
-              ))}
+          {/* Box nội dung bên trong */}
+          <div
+            className="flex flex-col items-center justify-center w-full min-h-[300px] md:min-h-[400px] rounded-[calc(2rem-2px)] text-center px-6 py-10"
+            style={{
+              background: "linear-gradient(to bottom, #140505, #080303)",
+            }}
+          >
+            {/* Cụm Icon */}
+            <div className="relative mb-6">
+              <IconHeartHandshake
+                size={80}
+                stroke={1.2}
+                className="text-[#e85102] relative z-10 drop-shadow-[0_0_15px_rgba(232,81,2,0.5)] group-hover:scale-110 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-[#bf0701] blur-[30px] opacity-40 z-0 rounded-full"></div>
             </div>
-          </motion.div>
 
-          {/* Silver Sponsors */}
-          <motion.div variants={itemVariants}>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 md:mb-8 text-gradient-silver drop-shadow-text tracking-wider">
-              Silver Sponsors
-            </h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mx-auto">
-              {sponsorsData.silver.map((sponsor) => (
-                <SponsorCard key={sponsor.name} {...sponsor} />
-              ))}
-            </div>
-          </motion.div>
+            <h3 className="text-2xl md:text-4xl font-black tracking-widest uppercase text-transparent bg-clip-text bg-gradient-to-r from-[#ffb09e] to-[#e85102] drop-shadow-md mb-4">
+              Building a Powerful Network
+            </h3>
 
-          {/* Other Tiers - Displayed in a flexible grid */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:pt-4">
-            {/* Strategic Partner */}
-            <motion.div variants={itemVariants}>
-              <h3 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-color-gradient drop-shadow-text tracking-wider md:h-20 md:flex md:items-center md:justify-center">
-                Strategic Advisors
-              </h3>
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-1 gap-4">
-                {sponsorsData.strategic.map((sponsor) => (
-                  <div key={sponsor.name} className="w-full max-w-xs">
-                    <SponsorCard {...sponsor} />
-                  </div>
-                ))}
-              </div>
-            </motion.div>
+            <p className="text-gray-300 text-sm md:text-lg font-medium max-w-4xl leading-relaxed">
+              We are actively collaborating with leading enterprises and
+              academic institutions to fuel your innovation. With massive prize
+              pools, our upcoming sponsors are bringing the ultimate resources
+              to reward your breakthrough ideas.
+            </p>
 
-            {/* Academic Sponsors */}
-            <motion.div variants={itemVariants}>
-              <h3 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-color-gradient drop-shadow-text tracking-wider md:h-20 md:flex md:items-center md:justify-center">
-                Academic Sponsors
-              </h3>
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-1 gap-4">
-                {sponsorsData.academic.map((sponsor) => (
-                  <div key={sponsor.name} className="w-full">
-                    <SponsorCard {...sponsor} />
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* F&B Sponsor */}
-            <motion.div variants={itemVariants}>
-              <h3 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-color-gradient drop-shadow-text tracking-wider md:h-20 md:flex md:items-center md:justify-center">
-                F&B Sponsor
-              </h3>
-              <div className="flex justify-center">
-                {sponsorsData.fb.map((sponsor) => (
-                  <div key={sponsor.name} className="w-full max-w-xs">
-                    <SponsorCard {...sponsor} />
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* Livestream Sponsor */}
-            <motion.div variants={itemVariants}>
-              {/* ADDED: md:h-20 md:flex md:items-center md:justify-center */}
-              <h3 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-color-gradient drop-shadow-text tracking-wider md:h-20 md:flex md:items-center md:justify-center">
-                Livestream Sponsor
-              </h3>
-              <div className="flex justify-center">
-                {sponsorsData.livestream.map((sponsor) => (
-                  <div key={sponsor.name} className="w-full max-w-xs">
-                    <SponsorCard {...sponsor} />
-                  </div>
-                ))}
-              </div>
-            </motion.div>
+            <p className="mt-6 md:mt-8 text-[#bf0701] font-bold text-sm md:text-base tracking-[0.3em] uppercase bg-[#bf0701]/10 border border-[#bf0701]/30 px-6 py-2 rounded-full animate-pulse">
+              Announcing Soon
+            </p>
           </div>
-        </motion.div>
-      </div>
-    </Tooltip.Provider>
+        </div>
+      </motion.div>
+    </div>
   );
 };

@@ -32,10 +32,7 @@ export const VideoRecapSection = () => {
         transition={{ duration: 0.8, ease: "easeOut" }}
         className="max-md:text-3xl md:text-5xl lg:text-6xl text-center text-white font-semibold drop-shadow-text mb-4 md:mb-8"
       >
-        <span className="text-color-gradient inline-block md:leading-[5rem]">
-          Our Legacy:&nbsp;
-        </span>
-        <span className="inline-block">Relive The Highlights</span>
+        Hack-A-Venture <span className="text-color-gradient">Highlights</span>
       </motion.div>
 
       {/* --- TAB SWITCHER --- */}

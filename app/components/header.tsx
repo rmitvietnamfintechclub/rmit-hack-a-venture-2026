@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { IconArrowUpRight } from "@tabler/icons-react";
 
 export const Header = () => {
@@ -16,7 +17,7 @@ const LaptopNav = () => {
   return (
     <nav
       id="header"
-      className="px-10 lg:px-20 sticky z-50 top-0 w-full h-[80px] bg-[#050101]/95 backdrop-blur-md border-b border-[#bf0701]/20 shadow-[0_4px_30px_rgba(0,0,0,0.5)] text-[15px] hidden lg:flex justify-between items-center transition-all duration-300"
+      className="px-10 lg:px-20 fixed left-0 z-50 top-0 w-full h-[80px] bg-[#050101]/95 backdrop-blur-md border-b border-[#bf0701]/20 shadow-[0_4px_30px_rgba(0,0,0,0.5)] text-[15px] hidden lg:flex justify-between items-center transition-all duration-300"
     >
       {/*----------------------------- Left Side: Logo & Links ------------------------*/}
       <div className="flex items-center gap-[60px] xl:gap-[80px]">
@@ -35,11 +36,10 @@ const LaptopNav = () => {
             className="relative group flex items-center text-gray-200 hover:text-white transition-colors duration-300"
           >
             Handbook
-            {/* Thay thế Arrow.png bằng IconArrowUpRight */}
-            <IconArrowUpRight 
-              size={18} 
-              stroke={2.5} 
-              className="ml-1 opacity-70 group-hover:opacity-100 group-hover:-translate-y-[2px] group-hover:translate-x-[2px] transition-all duration-300" 
+            <IconArrowUpRight
+              size={18}
+              stroke={2.5}
+              className="ml-1 opacity-70 group-hover:opacity-100 group-hover:-translate-y-[2px] group-hover:translate-x-[2px] transition-all duration-300"
             />
             <span className="absolute -bottom-2 left-0 w-0 h-[2px] bg-gradient-to-r from-[#bf0701] to-[#e85102] transition-all duration-300 group-hover:w-full"></span>
           </a>
@@ -50,10 +50,10 @@ const LaptopNav = () => {
             className="relative group flex items-center text-gray-200 hover:text-white transition-colors duration-300"
           >
             Rules & Regulations
-            <IconArrowUpRight 
-              size={18} 
-              stroke={2.5} 
-              className="ml-1 opacity-70 group-hover:opacity-100 group-hover:-translate-y-[2px] group-hover:translate-x-[2px] transition-all duration-300" 
+            <IconArrowUpRight
+              size={18}
+              stroke={2.5}
+              className="ml-1 opacity-70 group-hover:opacity-100 group-hover:-translate-y-[2px] group-hover:translate-x-[2px] transition-all duration-300"
             />
             <span className="absolute -bottom-2 left-0 w-0 h-[2px] bg-gradient-to-r from-[#bf0701] to-[#e85102] transition-all duration-300 group-hover:w-full"></span>
           </a>
@@ -118,10 +118,11 @@ const useDimensions = (ref: any) => {
   return dimensions.current;
 };
 
+// CẬP NHẬT UI: Làm nét vẽ thanh mảnh hơn (strokeWidth="1.5") để nút X nhìn sang trọng
 const Path = (props: any) => (
   <motion.path
-    fill="white"
-    strokeWidth="2"
+    fill="transparent"
+    strokeWidth="1.5"
     stroke="white"
     strokeLinecap="round"
     {...props}
@@ -130,24 +131,23 @@ const Path = (props: any) => (
 
 const MobileNav = () => {
   const [hamburgerBarIsActive, setHamburgerBarIsActive] = useState(false);
-  const [hoverItemNumber, setHoverItemNumber] = useState(-1);
   const toggle = () => setHamburgerBarIsActive(!hamburgerBarIsActive);
   const containerRef = useRef(null);
   const { height } = useDimensions(containerRef);
 
   return (
-    <section className="lg:hidden flex justify-between items-center sticky top-0 z-50">
+    <section className="lg:hidden flex w-full justify-between items-center fixed left-0 top-0 z-50">
       <motion.nav
         initial={false}
         animate={hamburgerBarIsActive ? "open" : "closed"}
         custom={height}
         ref={containerRef}
-        className="w-full h-[72px] backdrop-blur-md bg-black/70 border-b-[1px] border-solid border-[#840602]/30 flex justify-between items-center pr-6"
+        className="w-full h-[80px] bg-[#050101]/95 backdrop-blur-md border-b border-[#bf0701]/20 shadow-[0_4px_30px_rgba(0,0,0,0.5)] flex justify-between items-center pr-6"
       >
         {/*---------- mobile logo ----------*/}
         <a className="no-underline block ml-6" href="/">
           <img
-            className="h-[3rem]"
+            className="h-[3.25rem]"
             src="/hackaventure-logo.png"
             alt="Mobile logo"
           />
@@ -157,17 +157,18 @@ const MobileNav = () => {
         <div
           title="Menu"
           onClick={toggle}
-          className="flex flex-col justify-center items-center cursor-pointer"
+          className="flex flex-col justify-center items-center cursor-pointer p-2"
         >
-          <svg width="45" height="40" viewBox="0 0 20 20" fill="#ffffff">
+          {/* CẬP NHẬT UI: Thu nhỏ viewBox và kích thước icon để nó gọn gàng hơn */}
+          <svg width="30" height="30" viewBox="0 0 20 20">
             <Path
               variants={{
-                closed: { d: "M 2 2.5 L 20 2.5" },
-                open: { d: "M 3 16.5 L 17 2.5" },
+                closed: { d: "M 2 4 L 18 4" },
+                open: { d: "M 4 16 L 16 4" },
               }}
             />
             <Path
-              d="M 2 9.423 L 20 9.423"
+              d="M 2 10 L 18 10"
               variants={{
                 closed: { opacity: 1 },
                 open: { opacity: 0 },
@@ -176,15 +177,14 @@ const MobileNav = () => {
             />
             <Path
               variants={{
-                closed: { d: "M 2 16.346 L 20 16.346" },
-                open: { d: "M 3 2.5 L 17 16.346" },
+                closed: { d: "M 2 16 L 18 16" },
+                open: { d: "M 4 4 L 16 16" },
               }}
             />
           </svg>
         </div>
         <Navigation hamburgerBarIsActive={hamburgerBarIsActive} />
       </motion.nav>
-      {/*----------------------- navbar body ---------------*/}
     </section>
   );
 };
@@ -209,10 +209,10 @@ const Navigation = ({
 
   const variantsNav = {
     open: {
-      transition: { staggerChildren: 0.07, delayChildren: 0.2 },
+      transition: { staggerChildren: 0.05, delayChildren: 0.1 },
     },
     closed: {
-      transition: { staggerChildren: 0.09, staggerDirection: -1 },
+      transition: { staggerChildren: 0.05, staggerDirection: -1 },
     },
   };
 
@@ -225,7 +225,7 @@ const Navigation = ({
       },
     },
     closed: {
-      y: 50,
+      y: 30,
       opacity: 0,
       transition: {
         y: { stiffness: 1000 },
@@ -235,13 +235,13 @@ const Navigation = ({
 
   return (
     <section
-      className={`absolute top-[72px] w-full h-screen mx-auto ${
+      className={`absolute top-[80px] w-full h-[calc(100vh-80px)] mx-auto ${
         menuVisible ? "left-0" : "left-full hidden"
-      } top-[75px] bg-[#050202] z-50 duration-500 text-[25px]`}
+      } bg-[#050202] backdrop-blur-xl border-t border-[#bf0701]/20 z-50 duration-500 text-[18px] font-medium`}
     >
       <motion.ul
         variants={variantsNav}
-        className=" my-[30px] mx-auto w-[90%] flex flex-col items-center gap-[50px]"
+        className="mt-12 mx-auto w-[85%] flex flex-col items-center gap-[32px]"
       >
         <motion.li
           variants={variants}
@@ -254,7 +254,11 @@ const Navigation = ({
             className="flex items-center text-gray-200 hover:text-[#e85102] transition-colors"
           >
             Handbook
-            <IconArrowUpRight size={22} stroke={2.5} className="ml-1 opacity-80" />
+            <IconArrowUpRight
+              size={18}
+              stroke={2.5}
+              className="ml-1 opacity-70"
+            />
           </a>
         </motion.li>
 
@@ -269,7 +273,11 @@ const Navigation = ({
             className="flex items-center text-gray-200 hover:text-[#e85102] transition-colors"
           >
             Rules & Regulations
-            <IconArrowUpRight size={22} stroke={2.5} className="ml-1 opacity-80" />
+            <IconArrowUpRight
+              size={18}
+              stroke={2.5}
+              className="ml-1 opacity-70"
+            />
           </a>
         </motion.li>
 
@@ -297,7 +305,7 @@ const Navigation = ({
               background: "linear-gradient(to right, #bf0701, #e85102)",
               boxShadow: "0 4px 15px rgba(232, 81, 2, 0.3)",
             }}
-            className="px-[24px] py-[14px] rounded-full text-white font-bold w-full max-w-[300px] mx-auto block"
+            className="px-[24px] py-[12px] rounded-full text-white text-[18px] font-bold w-full max-w-[220px] mx-auto block"
           >
             <a
               href=""

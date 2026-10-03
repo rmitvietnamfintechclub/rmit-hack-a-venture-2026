@@ -1,289 +1,162 @@
 "use client";
 import Image from "next/image";
-import React, { useState } from "react";
-import clsx from "clsx";
-import { IconSpeakerphone } from "@tabler/icons-react";
+import React, { useEffect } from "react";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
-// --- Types ---
 interface MentorInfo {
   name: string;
   title: string;
-  company: string;
   image_path: string;
 }
 
-const allMentors = {
-  round2: [
-    {
-      name: "Hai Anh Gwen",
-      title: "Product Management Expert",
-      company: "One Mount",
-      image_path: "HaiAnhGwen-Round2.png",
-    },
-    {
-      name: "Manroe Tran",
-      title: "Solution Expert",
-      company: "Techcombank",
-      image_path: "ManroeTran-Round2.png",
-    },
-    {
-      name: "Tran Xuan Manh",
-      title: "Product Designer | Scrum Master",
-      company: "BIDV",
-      image_path: "TranXuanManh-Round2.png",
-    },
-    {
-      name: "Dai Truong",
-      title: "APAC & Global Program Manager",
-      company: "Movement Labs",
-      image_path: "DaiTruong-Round2.png",
-    },
-    {
-      name: "Sang Do",
-      title: "Product Lead",
-      company: "Stably",
-      image_path: "SangDo-Round2.png",
-    },
-  ],
-  round3: [
-    {
-      name: "Khang Nguyen",
-      title: "Management Trainee | Business Analyst",
-      company: "Avery Dennison",
-      image_path: "KhangNguyen-Round3.png",
-    },
-    {
-      name: "Nguyen Trong Nghia",
-      title: "Creative Designer",
-      company: "Vodafone Business",
-      image_path: "NguyenTrongNghia-Round3.png",
-    },
-    {
-      name: "Louis Nguyen",
-      title: "Community Manager",
-      company: "Chainlink Labs",
-      image_path: "LouisNguyen-Round3.png",
-    },
-    {
-      name: "Tuan Pham",
-      title: "Co-Founder",
-      company: "VertZéro",
-      image_path: "TuanPham-Round3.png",
-    },
-    {
-      name: "Chiem Tri Quang",
-      title: "AI Expert",
-      company: "Bosch Global Software Technologies Vietnam",
-      image_path: "ChiemQuangTri-Round3.png",
-    },
-    {
-      name: "Darryl Han",
-      title: "Chief of Staff",
-      company: "Fly Fairly",
-      image_path: "DarrylHan-Round3.png",
-    },
-    {
-      name: "Tien Nguyen",
-      title: "Software Engineer",
-      company: "Google",
-      image_path: "TienNguyen-Round3.png",
-    },
-    {
-      name: "Phuc Pham",
-      title: "Senior Product Designer",
-      company: "ONUS",
-      image_path: "PhucPham-Round3.png",
-    },
-    {
-      name: "Hai Anh Gwen",
-      title: "Product Management Expert",
-      company: "One Mount",
-      image_path: "HaiAnhGwen-Round2.png",
-    },
-    {
-      name: "Manroe Tran",
-      title: "Solution Expert",
-      company: "Techcombank",
-      image_path: "ManroeTran-Round2.png",
-    },
-    {
-      name: "Tran Xuan Manh",
-      title: "Product Designer | Scrum Master",
-      company: "BIDV",
-      image_path: "TranXuanManh-Round2.png",
-    },
-    {
-      name: "Dai Truong",
-      title: "APAC & Global Program Manager",
-      company: "Movement Labs",
-      image_path: "DaiTruong-Round2.png",
-    },
-    {
-      name: "Sang Do",
-      title: "Product Lead",
-      company: "Stably",
-      image_path: "SangDo-Round2.png",
-    },
-  ],
-};
+const mentorsList: MentorInfo[] = [
+  {
+    name: "Ha Nguyen",
+    title: "Director Information Security @Techcombank",
+    image_path: "HaNguyen.png",
+  },
+  {
+    name: "Tu Nguyen",
+    title: "CEO & Co-founder @Kyons",
+    image_path: "TuNguyen.png",
+  },
+  {
+    name: "Au Nguyen",
+    title: "Business Advisor @Startups",
+    image_path: "AuNguyen.png",
+  },
+  {
+    name: "George Nguyen",
+    title: "Co-founder @10XLAB | Investor @Legal3 Venture Studio",
+    image_path: "GeorgeNguyen.png",
+  },
+  {
+    name: "Manroe Tran",
+    title: "Senior Manager @Tiki",
+    image_path: "ManroeTran.png",
+  },
+  {
+    name: "Duc Nguyen",
+    title: "CEO @Gaian Network",
+    image_path: "DucNguyen.png",
+  },
+  {
+    name: "Tony Nguyen",
+    title: "Product Owner @VnDirect",
+    image_path: "TonyNguyen.png",
+  },
+  {
+    name: "Quynh Nguyen",
+    title: "Deputy Director & Director of Training Programs @CBS",
+    image_path: "QuynhNguyen.png",
+  },
+];
 
-const MentorItem = (props: MentorInfo & { className?: string }) => {
-  const { name, title, company, image_path, className } = props;
+const MentorCard = ({ data }: { data: MentorInfo }) => {
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
+  const controls = useAnimation();
+
+  useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    }
+  }, [controls, inView]);
 
   return (
-    <div className={clsx("relative group h-full", className)}>
-      {/* --- Tech Borders Animation --- */}
-      <div className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-yellow-400 opacity-0 group-hover:opacity-100 transition-all duration-300 transform -translate-x-2 -translate-y-2 group-hover:translate-x-0 group-hover:translate-y-0"></div>
-      <div className="absolute top-0 right-0 w-6 h-6 border-t-2 border-r-2 border-yellow-400 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 -translate-y-2 group-hover:translate-x-0 group-hover:translate-y-0"></div>
-      <div className="absolute bottom-0 left-0 w-6 h-6 border-b-2 border-l-2 border-green-400 opacity-0 group-hover:opacity-100 transition-all duration-300 transform -translate-x-2 translate-y-2 group-hover:translate-x-0 group-hover:translate-y-0"></div>
-      <div className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-green-400 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 translate-y-2 group-hover:translate-x-0 group-hover:translate-y-0"></div>
-
-      {/* --- Card Content --- */}
-      <div className="flex flex-col h-full bg-gray-900/90 p-4 text-center backdrop-blur-sm transition-all duration-300 group-hover:bg-gray-800 rounded-lg border border-gray-800 group-hover:border-gray-700 shadow-xl">
-        <div className="relative mb-4 mx-auto w-full max-w-[200px]">
-          {/* Image Container with Clip Path */}
-          <div className="relative w-full aspect-square">
-            <Image
-              src={`/mentors/${image_path}`}
-              alt={name}
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              width={200}
-              height={200}
-              style={{
-                clipPath: "polygon(0 20px, 20px 0, 100% 0, 100% 100%, 0 100%)",
-              }}
-            />
-          </div>
-          {/* Gradient Line under image - Converted to Style */}
-          <div
-            className="absolute bottom-0 left-0 h-[2px] w-full opacity-75 group-hover:opacity-100 group-hover:animate-pulse"
-            style={{
-              background:
-                "linear-gradient(to right, transparent, #4ade80, transparent)",
-            }}
-          ></div>
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, scale: 0.95, y: 20 }}
+      animate={controls}
+      variants={{
+        visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.5 } },
+      }}
+      className="w-full h-full"
+    >
+      <div className="flex flex-col h-full bg-[#080303] border border-white/10 border-t-[#e85102] border-t-4 rounded-2xl overflow-hidden group hover:-translate-y-2 hover:shadow-[0_15px_30px_rgba(232,81,2,0.15)] hover:border-white/20 transition-all duration-300 relative">
+        {/* Dấu cộng công nghệ (Tech Decor) ở các góc */}
+        <div className="absolute top-2 left-2 text-[#bf0701] opacity-50 text-xs font-light">
+          +
+        </div>
+        <div className="absolute top-2 right-2 text-[#bf0701] opacity-50 text-xs font-light">
+          +
         </div>
 
-        <div className="flex flex-col flex-grow items-center justify-start">
-          <h3 className="text-lg font-bold mb-1 text-green-color-gradient uppercase tracking-wide">
-            {name}
+        {/* Cụm Hình ảnh (Avatar) - Nổi bật, bo tròn và tách biệt với viền thẻ */}
+        <div className="px-6 pt-8 pb-4 flex justify-center relative">
+          {/* Hiệu ứng nhịp thở đằng sau ảnh */}
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-[#e85102] rounded-full blur-[40px] opacity-0 group-hover:opacity-40 transition-opacity duration-500"></div>
+
+          <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full p-1 bg-gradient-to-br from-[#bf0701] to-[#e85102] group-hover:rotate-180 transition-transform duration-700 shadow-lg">
+            {/* Ảnh nằm trong một khung tròn */}
+            <div className="w-full h-full rounded-full overflow-hidden bg-gray-900 group-hover:-rotate-180 transition-transform duration-700">
+              <Image
+                src={`/mentors/${data.image_path}`}
+                alt={data.name}
+                className="w-full h-full object-cover object-top transition-all duration-500"
+                width={200}
+                height={200}
+              />
+            </div>
+          </div>
+
+          {/* Label "Mentor" nhỏ đè lên ảnh */}
+          <div className="absolute bottom-2 bg-gradient-to-r from-[#bf0701] to-[#e85102] text-white text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest shadow-md">
+            Mentor
+          </div>
+        </div>
+
+        {/* Cụm Thông tin (Info) */}
+        <div className="flex flex-col flex-grow items-center text-center px-4 pb-8 relative z-10">
+          <h3 className="text-lg md:text-xl font-bold text-white mb-2 group-hover:text-[#e85102] transition-colors duration-300">
+            {data.name}
           </h3>
-          <p className="text-sm text-yellow-500 font-semibold mb-2">
-            {title} | {company}
+
+          {/* Phân tách chức danh và tên công ty để làm nổi bật tên cty (sau chữ @) */}
+          <p className="text-xs md:text-sm text-gray-400 font-medium leading-relaxed">
+            {data.title.split("@")[0]}
+            {data.title.includes("@") && (
+              <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#e85102] to-[#ffb09e]">
+                @{data.title.split("@")[1]}
+              </span>
+            )}
           </p>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
 export const MentorSection = () => {
-  const [activeRound, setActiveRound] = useState(2);
-
-  const renderContent = () => {
-    const currentMentors =
-      activeRound === 2 ? allMentors.round2 : allMentors.round3;
-    const isRound2 = activeRound === 2;
-
-    if (currentMentors && currentMentors.length > 0) {
-      return (
-        <div className="flex flex-wrap justify-center gap-6 lg:gap-8">
-          {currentMentors.map((mentor, key) => (
-            <MentorItem
-              key={key}
-              name={mentor.name}
-              title={mentor.title}
-              company={mentor.company}
-              image_path={mentor.image_path}
-              className={clsx(
-                "w-full sm:w-[calc(50%-1.5rem)] min-w-[200px]",
-
-                isRound2
-                  ? 
-                    "md:w-[calc(33.33%-1.5rem)] lg:w-[calc(30%-1.5rem)]"
-                  :
-                    "md:w-[calc(33.33%-1.5rem)] lg:w-[calc(20%-1.6rem)]"
-              )}
-            />
-          ))}
-        </div>
-      );
-    } else {
-      // Empty State
-      return (
-        <div
-          className="relative h-48 md:h-64 p-px rounded-lg w-full mx-auto"
-          style={{
-            background: "linear-gradient(to bottom, #F37D12, #FDE309)",
-          }}
-        >
-          <div
-            className="flex flex-col items-center justify-center w-full h-full rounded-[7px] text-center px-4 shadow-2xl"
-            style={{
-              background: "linear-gradient(to bottom, #10382C, #0A1B15)",
-            }}
-          >
-            <IconSpeakerphone
-              size={65}
-              className="max-md:w-[50px] text-yellow-400 max-md:mb-2 md:mb-4 animate-pulse"
-            />
-            <h3 className="max-md:text-2xl md:text-3xl font-bold tracking-wider uppercase text-color-gradient drop-shadow-sm">
-              Mentors Incoming
-            </h3>
-            <p className="mt-3 max-md:text-sm md:text-lg font-medium text-gray-400 max-w-lg">
-              We are finalizing the list of industry experts for Round{" "}
-              {activeRound}. Stay tuned for the reveal!
-            </p>
-          </div>
-        </div>
-      );
-    }
-  };
-
   return (
-    <div className="py-12 md:py-20 px-6 md:px-16 w-full relative overflow-hidden">
-      {/* Background Radial Gradient */}
-      <div
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl pointer-events-none opacity-20"
-        style={{
-          background:
-            "radial-gradient(ellipse at top, rgba(20, 83, 45, 0.4), transparent, transparent)",
-        }}
-      ></div>
+    <div className="pb-12 md:pb-20 px-6 md:px-20 w-full mx-auto relative">
+      {/* Background Decor */}
+      <div className="absolute bottom-0 right-0 w-[500px] h-[300px] bg-[#e85102] rounded-full blur-[200px] opacity-10 pointer-events-none -z-10"></div>
 
-      <div className="relative z-10">
-        <h1 className="max-md:text-4xl md:text-6xl text-center text-white font-semibold mb-8 drop-shadow-text">
+      {/* Tiêu đề & Phụ đề */}
+      <div className="text-center mb-12 md:mb-16">
+        <h1 className="max-md:text-4xl md:text-6xl text-white font-bold drop-shadow-text mb-4">
           Hack-A-Venture <span className="text-color-gradient">Mentors</span>
         </h1>
 
-        {/* Tab Navigation */}
-        <div className="flex justify-center items-center gap-4 md:gap-6 mb-10 md:mb-16">
-          {[2, 3].map((round) => (
-            <button
-              key={round}
-              onClick={() => setActiveRound(round)}
-              style={{
-                background:
-                  activeRound === round
-                    ? "linear-gradient(to right, #F37D12, #FDE309)"
-                    : undefined,
-              }}
-              className={clsx(
-                "py-2 px-6 md:px-8 rounded-full text-sm md:text-lg font-bold tracking-wide transition-all duration-300 border",
-                activeRound === round
-                  ? "text-black border-transparent shadow-[0_0_15px_rgba(243,125,18,0.5)] transform scale-105"
-                  : "bg-gray-900/60 text-gray-400 border-gray-700 hover:border-gray-500 hover:text-white backdrop-blur-md",
-              )}
-            >
-              Round {round}
-            </button>
-          ))}
-        </div>
+        {/* Câu Subtitle chính xác từ Slide của bạn */}
+        <p className="text-gray-400 text-sm md:text-base font-medium max-w-4xl mx-auto mt-6 leading-relaxed">
+          We’re excited to introduce our competition mentors, who will provide
+          hands-on guidance for teams that successfully enter Round 02/03. The
+          list of mentors is growing and will be updated further.
+        </p>
+      </div>
 
-        {/* Content Container */}
-        <div className="container mx-auto w-full animate-fadeIn">
-          {renderContent()}
-        </div>
+      {/* Lưới Danh sách Cố vấn (Grid tự động căn giữa) */}
+      <div className="flex flex-wrap justify-center gap-6 md:gap-8">
+        {mentorsList.map((mentor, key) => (
+          <div
+            key={key}
+            className="w-full max-w-[280px] sm:max-w-none sm:w-[calc(50%-12px)] md:w-[calc(33.333%-22px)] lg:w-[calc(25%-24px)]"
+          >
+            <MentorCard data={mentor} />
+          </div>
+        ))}
       </div>
     </div>
   );

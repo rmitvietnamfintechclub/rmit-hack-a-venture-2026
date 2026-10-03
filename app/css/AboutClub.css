@@ -1,8 +1,4 @@
-.text-clip {
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-}
-
+/* Ghi đè style của react-slick cho Mobile Slider */
 .slick-dots li button {
 	width: 6px;
 	height: 6px;
@@ -15,14 +11,14 @@
 
 /* Change dot color when active */
 .slick-dots li.slick-active button:before {
-	color: #F37D12;
+	color: #e85102;
 }
 
 .slick-slide div img {
-    opacity: 1; /* Ensure full opacity */
-    filter: none; /* Remove any filters affecting brightness */
+    opacity: 1; 
+    filter: none; 
 }
 
 .slick-slider::before {
-	content: none; /* Remove overlays if any */
+	content: none; 
 }

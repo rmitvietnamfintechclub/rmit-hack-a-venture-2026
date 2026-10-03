@@ -67,12 +67,9 @@ export const ThemeSection = () => {
         <div className="w-full flex flex-col items-center">
           <motion.div
             variants={itemVariants}
-            className="max-md:text-4xl md:text-6xl text-center text-white font-bold drop-shadow-[0_0_15px_rgba(255,255,255,0.3)] mb-8 md:mb-12"
+            className="max-md:text-4xl md:text-6xl text-center text-white font-bold drop-shadow-text mb-8 md:mb-12"
           >
-            Our{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#e85102] to-[#bf0701] drop-shadow-[0_0_20px_rgba(232,81,2,0.8)]">
-              Theme
-            </span>
+            Hack-A-Venture <span className="text-color-gradient">Theme</span>
           </motion.div>
 
           <motion.div variants={itemVariants} className="w-full">
@@ -105,19 +102,17 @@ export const ThemeSection = () => {
         <div className="w-full flex flex-col items-center">
           <motion.div
             variants={itemVariants}
-            className="max-md:text-4xl md:text-6xl text-center text-white font-bold drop-shadow-[0_0_15px_rgba(255,255,255,0.3)] mb-4 md:mb-6 mt-8 md:mt-10"
+            className="max-md:text-4xl md:text-6xl text-center text-white font-bold drop-shadow-text mb-4 md:mb-6 mt-8"
           >
-            Our{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#e85102] to-[#bf0701] drop-shadow-[0_0_20px_rgba(232,81,2,0.8)]">
-              Tech Focus
-            </span>
+            Hack-A-Venture <span className="text-color-gradient">Technology Focus</span>
           </motion.div>
 
-          <motion.p 
+          <motion.p
             variants={itemVariants}
             className="text-gray-300 text-lg md:text-xl font-medium text-center max-w-3xl mb-8 md:mb-12 px-4"
           >
-            Participants are encouraged to explore and leverage any technology of their choice, including but not limited to:
+            Participants are encouraged to explore and leverage any technology
+            of their choice, including but not limited to:
           </motion.p>
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 w-full">

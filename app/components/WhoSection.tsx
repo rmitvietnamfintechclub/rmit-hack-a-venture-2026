@@ -36,18 +36,18 @@ export const WhoSection = () => {
           animate={controls}
           variants={slideVariants}
           transition={{ duration: 1.3, delay: 0.5 }}
-          className="text-color-gradient inline-block md:leading-[5rem]"
+          className="inline-block"
         >
-          Who can join&nbsp;
-        </motion.div>
+          Target
+        </motion.div>{" "}
         <motion.div
           initial="hidden"
           animate={controls}
           variants={swipeVariants}
           transition={{ duration: 1.3, delay: 0.5 }}
-          className="inline-block"
+          className="text-color-gradient inline-block"
         >
-          Hack-A-Venture?
+          Participants
         </motion.div>
       </div>
 
@@ -98,8 +98,8 @@ export const WhoSection = () => {
             all inspiring students
           </span>{" "}
           who are passionate about driving innovation. While we welcome
-          participants from any academic background, our core target audiences
-          are the above. If you want to experiment with building technology-driven
+          participants from any academic background, our target participants are
+          the above. If you want to experiment with building technology-driven
           solutions to tackle real-world financial and sustainability
           challenges, this playground is for you.
         </p>
