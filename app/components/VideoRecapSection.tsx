@@ -24,7 +24,7 @@ export const VideoRecapSection = () => {
   };
 
   return (
-    <section className="w-full flex flex-col items-center mt-12 md:mb-12 md:px-20 max-md:px-6">
+    <section className="w-full flex flex-col items-center mt-14 md:mb-12 md:px-20 max-md:px-6">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}

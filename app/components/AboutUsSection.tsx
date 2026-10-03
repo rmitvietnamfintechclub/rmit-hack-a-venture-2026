@@ -4,13 +4,13 @@ import Image from "next/image";
 export const AboutUsSection = () => {
   return (
     <div className="items-center justify-center w-fit max-md:mt-[40px] text-lg md:text-xl text-white font-medium text-md md:px-20 max-md:px-6">
-      <Image
+      {/* <Image
         src="/key-visual.png"
         width={2000}
         height={1000}
         alt="Hack-A-Venture Key Visual"
         className="w-full h-auto rounded-lg"
-      />
+      /> */}
       <div className="mt-[40px] text-gray-300 leading-relaxed text-justify">
         With Vietnam’s rapidly evolving digital economy,{" "}
         <span className="text-color-gradient font-bold">
