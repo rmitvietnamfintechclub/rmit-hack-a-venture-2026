@@ -3,6 +3,7 @@ import Image from "next/image";
 import React, { useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import clsx from "clsx";
 
 export const WhoSection = () => {
   const { ref, inView } = useInView({
@@ -19,91 +20,89 @@ export const WhoSection = () => {
   }, [controls, inView]);
 
   const swipeVariants = {
-    hidden: { opacity: 0, y: 100 },
+    hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0 },
   };
 
-  const slideVariants = {
-    hidden: { opacity: 0, x: -300 },
-    visible: { opacity: 1, x: 0 },
+  const titleVariants = {
+    hidden: { opacity: 0, scale: 0.9 },
+    visible: { opacity: 1, scale: 1 },
   };
 
   return (
-    <div className="md:px-20 md:mt-[10px] max-md:px-6" ref={ref}>
-      <div className="max-md:text-3xl md:text-6xl max-md:pb-6 text-center text-white font-semibold drop-shadow-text">
-        <motion.div
-          initial="hidden"
-          animate={controls}
-          variants={slideVariants}
-          transition={{ duration: 1.3, delay: 0.5 }}
-          className="inline-block"
-        >
-          Target
-        </motion.div>{" "}
-        <motion.div
-          initial="hidden"
-          animate={controls}
-          variants={swipeVariants}
-          transition={{ duration: 1.3, delay: 0.5 }}
-          className="text-color-gradient inline-block"
-        >
-          Participants
-        </motion.div>
-      </div>
+    <section 
+      className="w-full flex flex-col items-center px-6 md:px-20 relative" 
+      ref={ref}
+    >
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-[#bf0701] rounded-full blur-[150px] opacity-10 pointer-events-none -z-10"></div>
 
-      <div className="grid md:grid-cols-5 max-md:grid-cols-2 max-md:grid-flow-row md:gap-10 max-md:gap-6 md:mt-[48px] justify-items-center">
+      {/* --- TIÊU ĐỀ --- */}
+      <motion.div
+        initial="hidden"
+        animate={controls}
+        variants={titleVariants}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="text-4xl md:text-5xl lg:text-6xl text-center text-white font-bold mb-8 md:mb-10"
+      >
+        <span className="drop-shadow-text">Target</span>{" "}
+        <span className="text-color-gradient drop-shadow-[0_0_20px_rgba(232,81,2,0.8)]">Participants</span>
+      </motion.div>
+
+      <div className="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-8 w-full max-w-6xl justify-items-center">
         {Array.from({ length: 5 }).map((_, index) => {
           const isLastItem = index === 4;
 
           return (
-            <div
+            <motion.div
               key={index}
-              className={
-                isLastItem
-                  ? "max-md:col-span-2 flex justify-center w-full" // On mobile, span 2 cols and center
-                  : "w-full"
-              }
+              initial="hidden"
+              animate={controls}
+              variants={swipeVariants}
+              transition={{ duration: 0.6, delay: index * 0.15 }}
+              className={clsx(
+                "w-full flex justify-center group",
+                isLastItem ? "col-span-2 md:col-span-1" : ""
+              )}
             >
-              <div className={`w-full ${isLastItem ? "max-md:w-1/2" : ""}`}>
-                <motion.div
-                  initial="hidden"
-                  animate={controls}
-                  variants={swipeVariants}
-                  transition={{ duration: 1.3, delay: 0.5 + index * 0.2 }}
-                  className="p-1 border-[0.25rem] border-dashed border-white rounded-3xl w-full"
-                >
-                  <Image
-                    src={`/whoSection${index + 1}.png`}
-                    alt="who"
-                    width={5000}
-                    height={5000}
-                    className="rounded-lg w-full h-auto p-2"
-                  />
-                </motion.div>
+              <div className={clsx("w-full transition-transform duration-500 group-hover:-translate-y-2", isLastItem ? "w-[50%] md:w-full" : "")}>
+                <div className="p-1.5 md:p-2 border-2 border-dashed border-white/20 group-hover:border-[#e85102]/80 group-hover:shadow-[0_0_20px_rgba(232,81,2,0.3)] rounded-2xl md:rounded-3xl w-full transition-all duration-500 bg-[#0a0202]/50 backdrop-blur-sm">
+                  <div className="relative w-full aspect-[3/4] md:aspect-auto overflow-hidden rounded-xl md:rounded-2xl">
+                    <Image
+                      src={`/whoSection${index + 1}.png`}
+                      alt={`Target Participant ${index + 1}`}
+                      width={500}
+                      height={700}
+                      className="w-full h-full object-contain md:object-cover group-hover:scale-105 transition-transform duration-700"
+                    />
+                  </div>
+                </div>
               </div>
-            </div>
+            </motion.div>
           );
         })}
       </div>
+
       <motion.div
         initial="hidden"
         animate={controls}
         variants={swipeVariants}
-        transition={{ duration: 1.3, delay: 1.8 }}
-        className="w-full flex justify-center mt-8 md:mt-12"
+        transition={{ duration: 0.8, delay: 0.8 }}
+        className="w-full flex justify-center mt-8"
       >
-        <p className="text-lg md:text-xl font-medium text-center md:text-justify text-gray-300 leading-relaxed">
-          Our competition is open to{" "}
-          <span className="text-color-gradient font-bold">
-            all inspiring students
-          </span>{" "}
-          who are passionate about driving innovation. While we welcome
-          participants from any academic background, our target participants are
-          the above. If you want to experiment with building technology-driven
-          solutions to tackle real-world financial and sustainability
-          challenges, this playground is for you.
-        </p>
+        <div className="w-full">
+          <p className="text-gray-300 text-[15px] md:text-lg font-medium text-center md:text-justify leading-[1.7] md:leading-relaxed">
+            Our competition is open to{" "}
+            <span className="text-color-gradient font-bold text-[16px] md:text-xl">
+              all inspiring students
+            </span>{" "}
+            who are passionate about driving innovation. While we welcome
+            participants from any academic background, our target participants are
+            the above. If you want to experiment with building technology-driven
+            solutions to tackle real-world financial and sustainability
+            challenges, this playground is for you.
+          </p>
+        </div>
       </motion.div>
-    </div>
+    </section>
   );
 };

@@ -12,7 +12,7 @@ export const Footer = () => {
       style={{
         background: "linear-gradient(to right, #bf0701, #e85102)",
       }}
-      className="pt-[3px] mt-20"
+      className="pt-[3px] mt-12 md:mt-20"
     >
       <div className="bg-[#050101] py-12 px-6 md:px-12 lg:px-20 flex flex-col justify-center items-center">
         

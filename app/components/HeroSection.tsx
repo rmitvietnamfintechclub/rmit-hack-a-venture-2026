@@ -47,11 +47,11 @@ export const HeroSection = () => {
               <motion.h1
                 initial="initial"
                 whileHover="hovered"
-                className="overflow-hidden relative w-fit mt-2"
+                className="overflow-hidden relative w-fit mt-2 drop-shadow-text"
                 style={{ lineHeight: "0.9", paddingBottom: "0.1rem" }}
                 transition={{ staggerChildren: 0.01 }}
               >
-                <div className="font-bold drop-shadow-text">
+                <div className="font-bold">
                   <FlipText
                     classFront="text-color-gradient"
                     classBack="text-white"
@@ -140,51 +140,61 @@ export const HeroSection = () => {
       </div>
 
       {/* MOBILE VIEW */}
-      <div className="md:hidden px-6 relative flex flex-col items-center">
-        <div className="absolute top-10 left-1/2 transform -translate-x-1/2 w-[250px] h-[250px] bg-[#e85102] rounded-full blur-[100px] opacity-20 -z-10"></div>
-        <motion.div className="relative w-full flex justify-center mt-10">
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[250px] h-[250px] bg-[#bf0701] rounded-full blur-[100px] opacity-40 -z-10"></div>
+      <div className="md:hidden px-6 relative flex flex-col items-center pb-12">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8 }}
+          className="relative w-full flex justify-center mt-4"
+        >
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[200px] h-[200px] bg-[#bf0701] rounded-full blur-[80px] opacity-40 -z-10"></div>
           <Image
             src={"/graphic1.png"}
             alt="HAV Graphic"
             width={800}
             height={800}
-            className="w-[90%] h-auto object-contain"
+            className="w-[90%] max-w-[320px] h-auto object-contain"
+            priority
           />
         </motion.div>
 
-        <div className="mb-[16px] text-[2.25rem] justify-center text-center mt-8">
-          <h1 className="text-white drop-shadow-text font-extrabold">
+        {/* Tiêu đề Mobile */}
+        <div className="text-center mt-8 mb-4">
+          <h1 className="text-white text-4xl drop-shadow-text font-black tracking-tight leading-none mb-1">
             RMIT 2026
           </h1>
-          <h1 className="text-color-gradient drop-shadow-text font-extrabold mt-[5px]">
+          <h1 className="text-color-gradient text-4xl drop-shadow-text font-black tracking-tight leading-none">
             Hack-A-Venture
           </h1>
         </div>
 
-        <div className="text-gray-300 leading-relaxed text-lg mb-[16px] font-medium text-justify mt-[16px]">
+        <div className="text-gray-300 leading-[1.6] text-[15px] font-medium text-center mt-2 px-2 max-w-[400px]">
           Organized by RMIT Vietnam FinTech Club,{" "}
           <span className="font-bold text-color-gradient">Hack-A-Venture</span>{" "}
           is a hackathon-style innovation competition for{" "}
-          <span className="font-bold text-color-gradient">Business</span> and{" "}
-          <span className="font-bold text-color-gradient">Technology</span>{" "}
+          <span className="font-bold text-white">Business</span> and{" "}
+          <span className="font-bold text-white">Technology</span>{" "}
           students nationwide, encouraging them to leverage technologies to{" "}
           <span className="font-bold text-color-gradient">
             address real-world challenges in Vietnam’s financial system
-          </span>
-          .
+          </span>.
         </div>
 
-        <div className="flex flex-col w-full gap-4 justify-center items-center mt-6 mb-12">
+        {/* Cụm nút bấm Mobile */}
+        <div className="flex flex-col w-full gap-3 justify-center items-center mt-8 max-w-[350px]">
           <button
-            className="w-full h-[54px] rounded-full justify-items-center flex justify-center items-center font-semibold font-poppins"
+            className="w-full h-[52px] rounded-full flex justify-center items-center font-bold text-[16px] tracking-wide group"
             style={primaryButtonStyle}
           >
-            <a href="" target="_blank" className="flex items-center gap-2">
+            <a
+              href=""
+              target="_blank"
+              className="flex items-center gap-2 w-full justify-center"
+            >
               Register Now
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-4 w-4"
+                className="h-5 w-5 group-hover:translate-x-1 transition-transform"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -200,13 +210,13 @@ export const HeroSection = () => {
           </button>
 
           <button
-            className="w-full h-[54px] rounded-full justify-items-center flex justify-center items-center font-semibold font-poppins"
+            className="w-full h-[52px] rounded-full flex justify-center items-center font-bold text-[16px] tracking-wide"
             style={secondaryButtonStyle}
           >
             <a
               href="https://canva.link/m8fk2y9xm9lnud9"
               target="_blank"
-              className="no-underline"
+              className="w-full h-full flex items-center justify-center"
             >
               See Handbook
             </a>

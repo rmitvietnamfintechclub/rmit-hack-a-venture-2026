@@ -3,7 +3,6 @@ import Image from "next/image";
 import React, { useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import clsx from "clsx";
 
 interface JudgeInfo {
   name: string;
@@ -82,20 +81,20 @@ const JudgeCard = ({ data }: { data: JudgeInfo }) => {
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 20 }} // Giảm độ nảy (y) xuống một chút cho mượt
       animate={controls}
       variants={{
         visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
       }}
       className="w-full h-full"
     >
-      {/* Khung thẻ chính */}
-      <div className="flex flex-col h-full bg-[#0a0202] border border-[#bf0701]/20 rounded-3xl overflow-hidden group hover:shadow-[0_10px_30px_rgba(232,81,2,0.25)] hover:border-[#e85102]/60 transition-all duration-500">
-        {/* Image Wrapper - CẬP NHẬT UI SPOTLIGHT Ở ĐÂY */}
+      {/* Khung thẻ chính - FIX MOBILE: Giảm bo góc từ 3xl xuống 2xl cho vừa vặn */}
+      <div className="flex flex-col h-full bg-[#0a0202] border border-[#bf0701]/20 rounded-2xl md:rounded-3xl overflow-hidden group hover:shadow-[0_10px_30px_rgba(232,81,2,0.25)] hover:border-[#e85102]/60 transition-all duration-500">
+        {/* Image Wrapper */}
         <div className="relative w-full aspect-[4/5] overflow-hidden bg-gradient-to-b from-[#1a0505] to-[#050101]">
-          {/* Hiệu ứng Hào quang (Spotlight) sau lưng Giám khảo */}
+          {/* Hiệu ứng Hào quang (Spotlight) */}
           <div className="absolute inset-0 flex items-center justify-center z-0">
-            <div className="w-[80%] h-[80%] bg-gradient-to-tr from-[#bf0701] to-[#e85102] rounded-full blur-[60px] opacity-20 group-hover:opacity-50 transition-opacity duration-700"></div>
+            <div className="w-[80%] h-[80%] bg-gradient-to-tr from-[#bf0701] to-[#e85102] rounded-full blur-[40px] md:blur-[60px] opacity-20 group-hover:opacity-50 transition-opacity duration-700"></div>
           </div>
 
           <div
@@ -114,20 +113,18 @@ const JudgeCard = ({ data }: { data: JudgeInfo }) => {
             height={500}
           />
 
-          {/* Lớp phủ bóng gradient để hòa viền ảnh vào thẻ văn bản bên dưới */}
           <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-[#0a0202] via-[#0a0202]/60 to-transparent z-10"></div>
         </div>
 
-        {/* Info Wrapper */}
-        <div className="flex flex-col flex-grow items-center text-center px-4 pb-6 relative z-20 -mt-4">
-          {/* Đường gạch ngang phát sáng khi hover */}
-          <div className="h-[2px] w-12 bg-[#bf0701]/50 group-hover:w-20 group-hover:bg-[#e85102] transition-all duration-500 mb-4 rounded-full shadow-[0_0_10px_rgba(232,81,2,0)] group-hover:shadow-[0_0_10px_rgba(232,81,2,0.8)]"></div>
+        {/* Info Wrapper - FIX MOBILE: Giảm padding và text size */}
+        <div className="flex flex-col flex-grow items-center text-center px-2 pb-4 md:px-4 md:pb-6 relative z-20 -mt-2 md:-mt-4">
+          <div className="h-[2px] w-8 md:w-12 bg-[#bf0701]/50 group-hover:w-16 md:group-hover:w-20 group-hover:bg-[#e85102] transition-all duration-500 mb-3 rounded-full shadow-[0_0_10px_rgba(232,81,2,0)] group-hover:shadow-[0_0_10px_rgba(232,81,2,0.8)]"></div>
 
-          <h3 className="text-lg md:text-xl font-bold text-white mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-[#e85102] group-hover:to-[#ffb09e] transition-all duration-300">
+          <h3 className="text-[15px] md:text-xl font-bold text-white mb-1.5 md:mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-[#e85102] group-hover:to-[#ffb09e] transition-all duration-300 leading-tight">
             {data.name}
           </h3>
 
-          <p className="text-xs md:text-sm text-gray-400 font-medium leading-snug uppercase tracking-wider">
+          <p className="text-[10px] md:text-sm text-gray-400 font-medium leading-snug uppercase tracking-wide md:tracking-wider line-clamp-3 md:line-clamp-none">
             {data.title}
           </p>
         </div>
@@ -138,31 +135,31 @@ const JudgeCard = ({ data }: { data: JudgeInfo }) => {
 
 export const JudgeSection = () => {
   return (
-    <div className="py-16 md:py-20 px-6 md:px-20 w-full mx-auto relative">
+    <div className="py-12 md:py-20 px-6 md:px-20 w-full mx-auto relative">
       {/* Hiệu ứng Background Phát Sáng */}
-      <div className="absolute top-[10%] left-1/2 -translate-x-1/2 w-[80%] h-[300px] bg-[#bf0701] rounded-full blur-[150px] opacity-10 pointer-events-none -z-10"></div>
+      <div className="absolute top-[5%] md:top-[10%] left-1/2 -translate-x-1/2 w-[80%] h-[200px] md:h-[300px] bg-[#bf0701] rounded-full blur-[100px] md:blur-[150px] opacity-10 pointer-events-none -z-10"></div>
 
       {/* Tiêu đề & Phụ đề */}
-      <div className="text-center mb-12 md:mb-16">
-        <h1 className="max-md:text-4xl md:text-6xl text-white font-bold drop-shadow-[0_0_15px_rgba(255,255,255,0.3)] mb-4">
-          Hack-A-Venture{" "}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#e85102] to-[#bf0701] drop-shadow-[0_0_20px_rgba(232,81,2,0.8)]">
+      <div className="text-center mb-6 md:mb-10">
+        <h1 className="text-4xl md:text-6xl text-white font-bold mb-4">
+          <span className="drop-shadow-text">Hack-A-Venture</span>{" "}
+          <br className="md:hidden" />
+          <span className="text-color-gradient drop-shadow-[0_0_20px_rgba(232,81,2,0.8)]">
             Judges
           </span>
         </h1>
-        <p className="text-gray-400 text-sm md:text-base font-medium max-w-3xl mx-auto mt-6 leading-relaxed">
+        {/* FIX MOBILE: Text-center, giảm line-height */}
+        <p className="text-gray-400 text-[14px] md:text-base font-medium max-w-2xl mx-auto mt-4 md:mt-6 leading-[1.6] md:leading-relaxed">
           The panel of judges combines a balanced expertise between academia and
           industry insights. Please stay tuned for further updates.
         </p>
       </div>
 
-      {/* Lưới Danh sách Giám khảo (Flex Wrap tự động căn giữa cực đẹp) */}
       <div className="flex flex-wrap justify-center gap-6 md:gap-8">
         {judgesList.map((judge, key) => (
           <div
             key={key}
-            // Căn chỉnh Width linh hoạt: 1 cột (Mobile) -> 2 cột (Sm) -> 3 cột (Md) -> 4 cột (Lg)
-            className="w-full max-w-[280px] sm:max-w-none sm:w-[calc(50%-12px)] md:w-[calc(33.333%-22px)] lg:w-[calc(25%-24px)]"
+            className="max-w-none w-[calc(50%-12px)] md:w-[calc(33.333%-22px)] lg:w-[calc(25%-24px)]"
           >
             <JudgeCard data={judge} />
           </div>

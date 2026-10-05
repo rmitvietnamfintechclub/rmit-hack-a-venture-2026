@@ -19,15 +19,14 @@ import {
 
 export const TimelineSection = () => {
   return (
-    <section className="w-full flex flex-col items-center md:px-20 max-md:px-6 mt-16 md:mt-24 overflow-x-hidden">
+    <section className="w-full flex flex-col items-center px-6 md:px-20 mt-16 md:mt-20 overflow-x-hidden">
       <div>
-        <h1 className="max-md:text-4xl md:text-6xl text-center text-white font-bold drop-shadow-text mb-4">
-          Hack-A-Venture <span className="text-color-gradient">Timeline</span>
+        <h1 className="text-4xl md:text-6xl text-center text-white font-bold mb-4">
+          <span className="drop-shadow-text">Hack-A-Venture</span>{" "}
+          <span className="text-color-gradient drop-shadow-[0_0_20px_rgba(232,81,2,0.8)]">Timeline</span>
         </h1>
       </div>
       <RoundFormatTimeline />
-
-      {/* Workshop Timeline được giữ lại màu sắc đồng bộ, bạn có thể update data sau */}
       <TrainingWorkshopTimeline />
     </section>
   );
@@ -100,7 +99,7 @@ const roundFormatData = [
     date: "Jan 20 – Jan 21, 2027",
     icon: <IconTrophy size={24} className="text-white" />,
     description: (
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-3">
         <p>
           <strong className="text-white">HackDay (Jan 20):</strong> Finalists
           must develop a minimum viable product (MVP) or prototype satisfying
@@ -134,17 +133,14 @@ const roundFormatData = [
 
 const RoundFormatTimeline = () => {
   return (
-    <section className="w-full flex flex-col items-center mt-12 relative mx-auto">
-      {/* Tiêu đề Khối */}
-      <div className="bg-gradient-to-r from-[#bf0701]/20 to-[#e85102]/20 border border-[#bf0701]/40 text-white text-lg md:text-xl font-bold py-2 px-8 rounded-full shadow-[0_0_20px_rgba(191,7,1,0.3)] mb-12 tracking-widest uppercase">
+    <section className="w-full flex flex-col items-center mt-4 md:mt-8 relative mx-auto">
+      <div className="bg-gradient-to-r from-[#bf0701]/20 to-[#e85102]/20 border border-[#bf0701]/40 text-white text-lg md:text-xl font-bold py-2 px-6 md:px-8 rounded-full shadow-[0_0_20px_rgba(191,7,1,0.3)] mb-12 tracking-widest uppercase">
         Round Format
       </div>
 
-      {/* Trục thời gian dọc (Vertical Line) */}
-      {/* Mobile: Nằm bên trái | Desktop: Nằm chính giữa */}
-      <div className="absolute left-[34px] md:left-1/2 top-[100px] bottom-0 w-[2px] bg-gradient-to-b from-[#bf0701] via-[#e85102] to-transparent -translate-x-1/2 opacity-50 z-0"></div>
+      <div className="absolute left-[18px] md:left-1/2 top-[100px] bottom-0 w-[2px] bg-gradient-to-b from-[#bf0701] via-[#e85102] to-transparent -translate-x-1/2 opacity-50 z-0"></div>
 
-      <div className="w-full flex flex-col gap-12 md:gap-24 relative z-10">
+      <div className="w-full flex flex-col gap-10 md:gap-24 relative z-10">
         {roundFormatData.map((item, index) => {
           const isEven = index % 2 === 0;
           return <TimelineCard key={item.id} data={item} isEven={isEven} />;
@@ -164,81 +160,76 @@ const TimelineCard = ({ data, isEven }: { data: any; isEven: boolean }) => {
     }
   }, [controls, inView]);
 
-  const cardVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6, ease: "easeOut" },
-    },
-  };
-
   return (
     <div
       ref={ref}
       className={clsx(
         "flex flex-col md:flex-row items-start w-full relative",
-        // Desktop: Chuyển đổi hướng trái/phải dựa trên index chẵn lẻ
         isEven ? "md:flex-row-reverse" : "",
       )}
     >
-      {/* KHỐI 1: Khoảng trống đệm cho layout Desktop */}
       <div className="hidden md:block md:w-1/2"></div>
 
-      {/* KHỐI 2: Điểm neo trên trục thời gian (Node) */}
       <div className="absolute left-[16px] md:left-1/2 transform -translate-x-1/2 mt-6 z-20 flex items-center justify-center">
         <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#bf0701] to-[#e85102] border-4 border-[#050101] shadow-[0_0_15px_rgba(232,81,2,0.8)] flex items-center justify-center">
           {data.icon}
         </div>
       </div>
 
-      {/* KHỐI 3: Nội dung Thẻ (Card Content) */}
       <motion.div
-        initial="hidden"
+        initial={{ opacity: 0, y: 50 }}
         animate={controls}
-        variants={cardVariants}
+        variants={{
+          visible: {
+            opacity: 1,
+            y: 0,
+            transition: { duration: 0.6, ease: "easeOut" },
+          },
+        }}
         className={clsx(
-          "w-full md:w-1/2 pl-[70px] pr-0",
-          isEven ? "md:pr-12 md:pl-0" : "md:pl-12 md:pr-0",
+          "w-full md:w-1/2 pl-[50px] md:pl-0",
+          isEven ? "md:pr-12" : "md:pl-12",
         )}
       >
-        <div className="bg-[#0a0202]/90 backdrop-blur-md border border-[#bf0701]/30 rounded-[2rem] p-6 md:p-8 shadow-[0_10px_30px_rgba(0,0,0,0.5)] hover:border-[#e85102]/60 hover:shadow-[0_15px_40px_rgba(232,81,2,0.2)] transition-all duration-300">
-          {/* Badge Thời gian */}
-          <div className="flex items-center gap-2 text-[#e85102] bg-[#e85102]/10 border border-[#e85102]/20 w-fit px-3 py-1 rounded-full mb-4">
+        <div className="bg-[#0a0202]/90 backdrop-blur-md border rounded-2xl md:rounded-[2rem] p-5 md:p-8 border-[#e85102]/60 shadow-[0_15px_40px_rgba(232,81,2,0.2)] transition-all duration-300">
+          <div className="flex items-center gap-2 text-[#e85102] bg-[#e85102]/10 border border-[#e85102]/20 w-fit px-3 py-1 rounded-full mb-3 md:mb-4">
             <IconCalendarEvent size={16} />
-            <span className="text-sm font-bold tracking-wider">
+            <span className="text-[13px] md:text-sm font-bold tracking-wider">
               {data.date}
             </span>
           </div>
 
-          <h2 className="text-xl md:text-2xl font-bold text-white mb-1">
-            {data.round} <span className="text-gray-500">|</span>{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#e85102] to-[#bf0701]">
-              {data.title}
-            </span>
+          <h2 className="text-xl md:text-2xl font-bold text-white mb-2 leading-snug">
+            {data.round}{" "}
+            <span className="text-gray-600 hidden md:inline">|</span>{" "}
+            <br className="md:hidden" />
+            <span className="text-color-gradient">{data.title}</span>
           </h2>
 
-          <div className="text-gray-300 text-sm md:text-base font-medium leading-relaxed mb-6 mt-3 text-justify">
+          <div className="text-gray-300 text-[15px] md:text-base font-medium leading-[1.6] md:leading-relaxed mb-6 mt-3 text-left md:text-justify">
             {data.description}
           </div>
 
-          {/* Bảng Deliverables thu nhỏ */}
-          <div className="bg-[#140505] border border-[#bf0701]/20 rounded-xl p-4 mt-4">
-            <div className="flex items-center justify-between mb-3 border-b border-white/10 pb-2">
+          <div className="bg-[#140505] border border-[#bf0701]/40 rounded-xl p-4 mt-4">
+            <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-2 md:gap-0 mb-3 border-b border-white/10 pb-3">
               <h4 className="text-xs font-bold text-gray-400 uppercase tracking-widest">
                 Requirements & Deliverables
               </h4>
               {data.target && (
-                <span className="text-xs font-bold text-[#bf0701] bg-[#bf0701]/10 px-2 py-1 rounded">
+                <span className="text-[10px] md:text-xs font-bold text-[#e85102] bg-[#e85102]/10 px-2.5 py-1 rounded border border-[#e85102]/20">
                   {data.target}
                 </span>
               )}
             </div>
-            <ul className="flex flex-col gap-2">
+
+            <ul className="flex flex-col gap-2.5">
               {data.deliverables.map((del: any, i: number) => (
-                <li key={i} className="flex items-start gap-3 text-sm">
-                  <span className="text-[#e85102] mt-0.5">❖</span>
-                  <div>
+                <li
+                  key={i}
+                  className="flex items-start gap-2 text-[14px] md:text-sm"
+                >
+                  <span className="text-[#e85102] mt-0.5 shrink-0">❖</span>
+                  <div className="leading-snug">
                     <span className="text-gray-400 font-semibold">
                       {del.label}:{" "}
                     </span>
@@ -254,6 +245,7 @@ const TimelineCard = ({ data, isEven }: { data: any; isEven: boolean }) => {
   );
 };
 
+// --- WORKSHOP DATA (Giữ nguyên) ---
 const trainingWorkshopData = [
   {
     id: "ws1",
@@ -392,18 +384,18 @@ const trainingWorkshopData = [
 
 const TrainingWorkshopTimeline = () => {
   return (
-    <section className="w-full flex flex-col items-center mt-24 relative mx-auto">
-      <div className="bg-gradient-to-r from-[#bf0701]/20 to-[#e85102]/20 border border-[#bf0701]/40 text-white text-lg md:text-xl font-bold py-2 px-8 rounded-full shadow-[0_0_20px_rgba(191,7,1,0.3)] mb-6 tracking-widest uppercase">
+    <section className="w-full flex flex-col items-center mt-20 relative mx-auto">
+      <div className="bg-gradient-to-r from-[#bf0701]/20 to-[#e85102]/20 border border-[#bf0701]/40 text-white text-lg md:text-xl font-bold py-2 px-6 md:px-8 rounded-full shadow-[0_0_20px_rgba(191,7,1,0.3)] mb-6 tracking-widest uppercase text-center">
         Training Workshops
       </div>
-      <p className="text-center text-base md:text-lg font-medium mb-12 text-gray-400 px-4">
+      <p className="text-center text-[15px] md:text-lg font-medium mb-10 md:mb-12 text-gray-400 px-4 leading-[1.6]">
         To support participants, Hack-A-Venture 2026 will provide a series of
         exclusive training workshops.
       </p>
 
-      <div className="absolute left-[10px] top-[160px] bottom-0 w-[2px] bg-gradient-to-b from-[#bf0701] via-[#e85102] to-transparent opacity-40 z-0"></div>
+      <div className="absolute left-[8px] md:left-[10px] top-[160px] bottom-0 w-[2px] bg-gradient-to-b from-[#bf0701] via-[#e85102] to-transparent opacity-40 z-0"></div>
 
-      <div className="w-full flex flex-col gap-10 relative z-10 pl-[60px]">
+      <div className="w-full flex flex-col gap-10 relative z-10 pl-[40px] md:pl-[60px]">
         {trainingWorkshopData.map((item) => (
           <WorkshopCard key={item.id} data={item} />
         ))}
@@ -412,7 +404,6 @@ const TrainingWorkshopTimeline = () => {
   );
 };
 
-// --- BENTO CARD CHO WORKSHOP ---
 const WorkshopCard = ({ data }: { data: any }) => {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
   const controls = useAnimation();
@@ -431,105 +422,110 @@ const WorkshopCard = ({ data }: { data: any }) => {
       variants={{
         visible: { opacity: 1, x: 0, transition: { duration: 0.5 } },
       }}
-      className="relative w-full max-w-5xl"
+      className="relative w-full"
     >
       {/* Node (Dấu chấm trên trục thời gian) */}
-      <div className="absolute -left-[64px] md:-left-[50px] top-8 transform -translate-x-1/2 z-20">
-        <div className="w-6 h-6 rounded-full bg-[#e85102] border-[5px] border-[#080303] shadow-[0_0_10px_rgba(232,81,2,0.8)]"></div>
+      <div className="absolute -left-[32px] md:-left-[50px] top-8 transform -translate-x-1/2 z-20">
+        <div className="w-5 h-5 md:w-6 md:h-6 rounded-full bg-[#e85102] border-[4px] md:border-[5px] border-[#080303] shadow-[0_0_10px_rgba(232,81,2,0.8)]"></div>
       </div>
 
-      {/* Card Content */}
-      <div className="bg-[#0f0404]/90 backdrop-blur-md border border-[#bf0701]/20 rounded-2xl overflow-hidden shadow-lg hover:border-[#e85102]/50 transition-colors duration-300">
+      <div className="bg-[#0f0404]/90 backdrop-blur-md border rounded-xl md:rounded-2xl overflow-hidden shadow-lg border-[#e85102]/50 transition-colors duration-300">
         {/* Card Header */}
-        <div className="bg-gradient-to-r from-[#1a0505] to-[#0a0202] p-5 md:p-6 border-b border-white/5 relative">
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-2">
-            <span className="text-color-gradient font-black text-xl md:text-2xl tracking-widest">
+        <div className="bg-gradient-to-r from-[#1a0505] to-[#0a0202] p-4 md:p-6 border-b border-white/5 relative">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-3">
+            <span className="text-color-gradient font-black text-xl md:text-2xl tracking-widest drop-shadow-md">
               WORKSHOP {data.order}
             </span>
-            <span className="bg-[#bf0701]/20 text-[#ffb09e] border border-[#bf0701]/40 text-[10px] md:text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider w-fit">
+            <span className="bg-[#bf0701]/20 text-[#ffb09e] border border-[#bf0701]/40 text-[9px] md:text-xs font-bold px-3 py-1.5 md:py-1 rounded-full uppercase tracking-wider w-fit text-left">
               {data.exclusive}
             </span>
           </div>
-          <h2 className="text-xl md:text-2xl font-bold text-white uppercase tracking-wide">
+          <h2 className="text-[17px] md:text-2xl font-bold text-white uppercase tracking-wide leading-snug">
             {data.title}
           </h2>
         </div>
 
-        {/* Card Meta (Thông tin cơ bản) */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-5 md:p-6 bg-[#050101]/50">
+        {/* Card Meta - FIX MOBILE: Ép khoảng cách (gap) hẹp lại để không bị rớt dòng */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 p-4 md:p-6 bg-[#050101]/50">
           <div className="flex items-center gap-2">
-            <div className="bg-[#e85102]/20 p-2 rounded-lg text-[#e85102]">
-              <IconCalendarEvent size={20} />
+            <div className="bg-[#e85102]/20 p-1.5 md:p-2 rounded-lg text-[#e85102]">
+              <IconCalendarEvent size={18} className="md:w-5 md:h-5" />
             </div>
             <div>
-              <p className="text-[10px] text-gray-500 font-bold uppercase tracking-wider">
+              <p className="text-[9px] md:text-[10px] text-gray-500 font-bold uppercase tracking-wider">
                 Date
               </p>
-              <p className="text-sm font-semibold text-gray-200">{data.date}</p>
+              <p className="text-[13px] md:text-sm font-semibold text-gray-200">
+                {data.date}
+              </p>
             </div>
           </div>
           <div className="flex items-center gap-2">
-            <div className="bg-[#e85102]/20 p-2 rounded-lg text-[#e85102]">
-              <IconClockHour4 size={20} />
+            <div className="bg-[#e85102]/20 p-1.5 md:p-2 rounded-lg text-[#e85102]">
+              <IconClockHour4 size={18} className="md:w-5 md:h-5" />
             </div>
             <div>
-              <p className="text-[10px] text-gray-500 font-bold uppercase tracking-wider">
+              <p className="text-[9px] md:text-[10px] text-gray-500 font-bold uppercase tracking-wider">
                 Duration
               </p>
-              <p className="text-sm font-semibold text-gray-200">
+              <p className="text-[13px] md:text-sm font-semibold text-gray-200">
                 {data.duration}
               </p>
             </div>
           </div>
           <div className="flex items-center gap-2">
-            <div className="bg-[#e85102]/20 p-2 rounded-lg text-[#e85102]">
+            <div className="bg-[#e85102]/20 p-1.5 md:p-2 rounded-lg text-[#e85102]">
               {data.format === "Online" ? (
-                <IconVideo size={20} />
+                <IconVideo size={18} />
               ) : (
-                <IconMapPin size={20} />
+                <IconMapPin size={18} />
               )}
             </div>
             <div>
-              <p className="text-[10px] text-gray-500 font-bold uppercase tracking-wider">
+              <p className="text-[9px] md:text-[10px] text-gray-500 font-bold uppercase tracking-wider">
                 Format
               </p>
-              <p className="text-sm font-semibold text-gray-200">
+              <p className="text-[13px] md:text-sm font-semibold text-gray-200">
                 {data.format}
               </p>
             </div>
           </div>
           <div className="flex items-center gap-2">
-            <div className="bg-[#e85102]/20 p-2 rounded-lg text-[#e85102]">
-              <IconUser size={20} />
+            <div className="bg-[#e85102]/20 p-1.5 md:p-2 rounded-lg text-[#e85102]">
+              <IconUser size={18} className="md:w-5 md:h-5" />
             </div>
             <div>
-              <p className="text-[10px] text-gray-500 font-bold uppercase tracking-wider">
+              <p
+                className="text-[9px] md:text-[10px] text-gray-500 font-bold uppercase tracking-wider line-clamp-1"
+                title={data.role}
+              >
                 {data.role}
               </p>
-              <p className="text-sm font-semibold text-gray-200">
+              <p className="text-[13px] md:text-sm font-semibold text-gray-200">
                 {data.speaker}
               </p>
             </div>
           </div>
         </div>
 
-        {/* Card Body (Nội dung giáo trình) */}
-        <div className="grid md:grid-cols-2 gap-px bg-white/5">
-          {/* Cột Trái: You'll Learn To */}
-          <div className="bg-[#0a0202] p-5 md:p-6">
+        {/* Card Body - FIX MOBILE: Flex column cho 2 cột nội dung */}
+        <div className="flex flex-col md:grid md:grid-cols-2 gap-px bg-white/5">
+          {/* Cột Trái */}
+          <div className="bg-[#0a0202] p-4 md:p-6 border-b md:border-b-0 border-white/5">
             <div className="flex items-center gap-2 mb-4">
-              <IconTarget className="text-[#e85102]" size={22} />
-              <h3 className="text-[#e85102] font-bold tracking-widest uppercase text-sm">
+              <IconTarget className="text-[#e85102]" size={20} />
+              <h3 className="text-[#e85102] font-bold tracking-widest uppercase text-[13px] md:text-sm">
                 You'll Learn To
               </h3>
             </div>
             <ul className="flex flex-col gap-3">
               {data.learn.map((txt: string, i: number) => (
-                <li key={i} className="flex items-start gap-2">
-                  <span className="text-[#bf0701] mt-0.5 font-black text-sm">
+                // FIX LỖI RỚT DÒNG BULLET: Thêm shrink-0 và mt-1
+                <li key={i} className="flex items-start gap-2.5">
+                  <span className="text-[#bf0701] mt-1 font-black text-sm shrink-0">
                     ▹
                   </span>
-                  <span className="text-gray-300 text-sm font-medium leading-relaxed">
+                  <span className="text-gray-300 text-[14px] md:text-sm font-medium leading-[1.6] md:leading-relaxed text-left">
                     {txt}
                   </span>
                 </li>
@@ -537,21 +533,21 @@ const WorkshopCard = ({ data }: { data: any }) => {
             </ul>
           </div>
 
-          {/* Cột Phải: Activities */}
-          <div className="bg-[#0a0202] p-5 md:p-6">
+          {/* Cột Phải */}
+          <div className="bg-[#0a0202] p-4 md:p-6">
             <div className="flex items-center gap-2 mb-4">
-              <IconCheck className="text-[#bf0701]" size={22} />
-              <h3 className="text-[#bf0701] font-bold tracking-widest uppercase text-sm">
+              <IconCheck className="text-[#bf0701]" size={20} />
+              <h3 className="text-[#bf0701] font-bold tracking-widest uppercase text-[13px] md:text-sm">
                 Activities
               </h3>
             </div>
             <ul className="flex flex-col gap-3">
               {data.activities.map((txt: string, i: number) => (
-                <li key={i} className="flex items-start gap-2">
-                  <span className="text-[#e85102] mt-0.5 font-black text-sm">
+                <li key={i} className="flex items-start gap-2.5">
+                  <span className="text-[#e85102] mt-1 font-black text-sm shrink-0">
                     ▹
                   </span>
-                  <span className="text-gray-300 text-sm font-medium leading-relaxed">
+                  <span className="text-gray-300 text-[14px] md:text-sm font-medium leading-[1.6] md:leading-relaxed text-left">
                     {txt}
                   </span>
                 </li>

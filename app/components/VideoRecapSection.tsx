@@ -13,26 +13,27 @@ export const VideoRecapSection = () => {
 
   // Style cho Tab buttons
   const activeTabStyle = {
-    background: "linear-gradient(to right, #bf0701, #e85102)",
+    background: "linear-gradient(to right, #e85102, #bf0701)",
     boxShadow: "0 4px 15px rgba(232, 81, 2, 0.4)",
     color: "#ffffff",
   };
   const inactiveTabStyle = {
     background: "rgba(20, 5, 5, 0.6)",
-    border: "1px solid #bf0701",
+    border: "1px solid rgba(191, 7, 1, 0.5)",
     color: "#a1a1aa", // text-gray-400
   };
 
   return (
-    <section className="w-full flex flex-col items-center mt-14 md:mb-12 md:px-20 max-md:px-6">
+    <section className="w-full flex flex-col items-center mt-12 md:mt-14 md:mb-12 md:px-20 max-md:px-6">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.5 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="max-md:text-3xl md:text-5xl lg:text-6xl text-center text-white font-semibold drop-shadow-text mb-4 md:mb-8"
+        className="max-md:text-3xl md:text-5xl lg:text-6xl text-center text-white font-bold mb-4 md:mb-8"
       >
-        Hack-A-Venture <span className="text-color-gradient">Highlights</span>
+        <span className="drop-shadow-text">Hack-A-Venture</span>{" "}
+        <span className="text-color-gradient drop-shadow-[0_0_20px_rgba(232,81,2,0.8)]">Highlights</span>
       </motion.div>
 
       {/* --- TAB SWITCHER --- */}
@@ -40,22 +41,21 @@ export const VideoRecapSection = () => {
         initial={{ opacity: 0, scale: 0.9 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
-        className="flex gap-4 mb-6 md:mb-10 bg-[#0a0202] p-2 rounded-full border border-[#840602]/50"
+        className="flex gap-2 md:gap-4 mb-8 md:mb-12 bg-[#0a0202] p-1.5 md:p-2 rounded-full border border-[#bf0701]/30 shadow-[0_5px_20px_rgba(0,0,0,0.5)]"
       >
         <button
           onClick={() => setActiveSeason("2024")}
-          className="px-8 py-2.5 rounded-full font-semibold transition-all duration-300"
+          className="px-6 md:px-8 py-2 md:py-2.5 rounded-full font-bold text-sm md:text-base transition-all duration-300"
           style={activeSeason === "2024" ? activeTabStyle : inactiveTabStyle}
         >
           Season 2024
         </button>
-
         <button
           onClick={() => {
             setActiveSeason("2025");
             setIsPlaying(false);
           }}
-          className="px-8 py-2.5 rounded-full font-semibold transition-all duration-300"
+          className="px-6 md:px-8 py-2 md:py-2.5 rounded-full font-bold text-sm md:text-base transition-all duration-300"
           style={activeSeason === "2025" ? activeTabStyle : inactiveTabStyle}
         >
           Season 2025
@@ -65,7 +65,6 @@ export const VideoRecapSection = () => {
       {/* --- TAB CONTENT AREA --- */}
       <div className="w-full min-h-[400px]">
         <AnimatePresence mode="wait">
-          {/* --- CONTENT 2025 (Chỉ dùng Ảnh) --- */}
           {activeSeason === "2025" && (
             <motion.div
               key="season-2025"
@@ -73,31 +72,36 @@ export const VideoRecapSection = () => {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 20 }}
               transition={{ duration: 0.4, ease: "easeInOut" }}
-              className="grid md:grid-cols-2 gap-6 md:gap-16 items-center"
+              className="grid md:grid-cols-2 gap-8 md:gap-16 items-center"
             >
-              {/* Text 2025 */}
-              <div className="text-center md:text-left order-2 md:order-1">
-                <h3 className="text-2xl font-bold text-white mb-4">
-                  The Scale Up:{" "}
+              <div className="flex flex-col items-center md:items-start text-center md:text-left order-2 md:order-1">
+                <h3 className="text-2xl md:text-3xl font-bold text-white mb-2 md:mb-4">
+                  The Scale Up: <br className="md:hidden" />
                   <span className="text-color-gradient">Bigger & Bolder</span>
                 </h3>
-                <p className="text-gray-300 text-md md:text-lg font-medium text-justify leading-relaxed">
+
+                <p className="text-gray-300 text-[15px] md:text-lg font-medium text-center md:text-justify leading-[1.7] md:leading-relaxed max-w-[400px] md:max-w-none">
                   Following our explosive debut,{" "}
                   <span className="text-color-gradient font-bold">
                     Hack-A-Venture 2025
                   </span>{" "}
-                  set new records. We expanded our reach, bringing together 358
-                  talented students across 94 teams from 32 universities
-                  nationwide and beyond. The competition elevated from concept
-                  pitches to rigorous prototype building, pushing the boundaries
-                  of how technology intersects with real-world business
-                  applications.
+                  set new records. We expanded our reach, bringing together{" "}
+                  <span className="text-color-gradient font-bold">
+                    358 talented students
+                  </span>{" "}
+                  across 94 teams from 32 universities nationwide and beyond.
+                  The competition elevated from concept pitches to rigorous
+                  prototype building, pushing the boundaries of how technology
+                  intersects with real-world business applications.
                 </p>
-                <p className="text-gray-300 text-md md:text-lg font-medium mt-4 text-justify leading-relaxed">
-                  Supported by a massive network of 11 sponsors, 14 industry
-                  mentors, and 17 esteemed judges, the 2025 season solidified
-                  our position as one of the most anticipated student-led
-                  innovation arenas in Vietnam.
+
+                <p className="text-gray-300 text-[15px] md:text-lg font-medium text-center md:text-justify leading-[1.7] md:leading-relaxed mt-4 max-w-[400px] md:max-w-none">
+                  Supported by a massive network of{" "}
+                  <span className="text-color-gradient font-bold">
+                    11 sponsors, 14 industry mentors, and 17 esteemed judges
+                  </span>
+                  , the 2025 season solidified our position as one of the most
+                  anticipated student-led innovation arenas in Vietnam.
                 </p>
               </div>
 
@@ -176,7 +180,6 @@ export const VideoRecapSection = () => {
             </motion.div>
           )}
 
-          {/* --- CONTENT 2024 (Dùng Video) --- */}
           {activeSeason === "2024" && (
             <motion.div
               key="season-2024"
@@ -184,33 +187,34 @@ export const VideoRecapSection = () => {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 20 }}
               transition={{ duration: 0.4, ease: "easeInOut" }}
-              className="grid md:grid-cols-2 gap-6 md:gap-16 items-center"
+              className="grid md:grid-cols-2 gap-8 md:gap-16 items-center"
             >
-              {/* Text 2024 */}
-              <div className="text-center md:text-left order-2 md:order-1">
-                <h3 className="text-2xl font-bold text-white mb-4">
-                  The Genesis:{" "}
+              <div className="flex flex-col items-center md:items-start text-center md:text-left order-2 md:order-1">
+                <h3 className="text-2xl md:text-3xl font-bold text-white mb-2 md:mb-4">
+                  The Genesis: <br className="md:hidden" />
                   <span className="text-color-gradient">
                     Where It All Began
                   </span>
                 </h3>
-                <p className="text-gray-300 text-md md:text-lg font-medium text-justify leading-relaxed">
+
+                {/* Đổi sang text-center cho Mobile, text-justify cho Desktop */}
+                <p className="text-gray-300 text-[15px] md:text-lg font-medium text-center md:text-justify leading-[1.7] md:leading-relaxed max-w-[400px] md:max-w-none">
                   <span className="text-color-gradient font-bold">
                     Hack-A-Venture 2024
                   </span>{" "}
                   wasn’t just a competition, it was the spark that started it
                   all. Over the two-month journey, more than 80 teams across the
                   country stepped up, with the Top 10 reaching the grand finale.
-                  Together, they turned raw, ambitious ideas into technology-driven
-                  solutions for a sustainable Vietnam, proving that sharp
-                  business acumen and technological innovation can truly go hand
-                  in hand.
+                  Together, they turned raw, ambitious ideas into
+                  technology-driven solutions for a sustainable Vietnam, proving
+                  that sharp business acumen and technological innovation can
+                  truly go hand in hand.
                 </p>
 
-                <p className="text-gray-300 text-md md:text-lg font-medium mt-4 text-justify leading-relaxed">
+                <p className="text-gray-300 text-[15px] md:text-lg font-medium text-center md:text-justify leading-[1.7] md:leading-relaxed mt-4 max-w-[400px] md:max-w-none">
                   We were honored to have our journey featured on the CafeTek
                   program, as part of{" "}
-                  <span className="font-bold text-color-gradient">HTV</span>.
+                  <span className="text-color-gradient font-bold">HTV</span>.
                   This was a proud milestone that validated our core mission to
                   create a playground that nurtures students' innovative spirits
                   and connects them with top industry experts.

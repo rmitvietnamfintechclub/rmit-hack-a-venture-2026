@@ -67,12 +67,12 @@ body {
   filter: drop-shadow(0px 4px 40px rgba(191, 7, 1, 0.3));
 }
 
-/* Gradient chữ chính: Từ Đỏ sậm -> Cam sáng */
 .text-color-gradient {
-  background-image: linear-gradient(to bottom, #bf0701, #eb7c30);
+  background-image: linear-gradient(to right, #eb7c30, #bf0701);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  filter: drop-shadow(0px 2px 10px rgba(235, 124, 48, 0.2));
 }
 
 .text-green-color-gradient {

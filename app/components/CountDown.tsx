@@ -22,7 +22,6 @@ import ReactCountdown from "react-countdown";
 import { IconSpeakerphone } from "@tabler/icons-react";
 import type { CountdownProps, CountdownRendererFn } from "react-countdown";
 
-// CẬP NHẬT UI: Hàm này chứa mặt tĩnh của thẻ lật
 const StaticCard = ({
   position,
   unit,
@@ -298,15 +297,13 @@ export const Countdown = ({ date }: Pick<CountdownProps, "date">) => {
     <div className="my-8 md:my-20 md:px-20 px-6 relative">
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-[#e85102] rounded-[100%] blur-[180px] opacity-10 pointer-events-none"></div>
 
-      <h1
-        className={`max-md:text-3xl md:text-[3.5rem] text-center md:leading-[5rem] text-white font-semibold drop-shadow-text`}
-      >
+      <h1 className="text-4xl md:text-[3.55rem] text-center leading-tight md:leading-tight text-white font-bold drop-shadow-[0_0_15px_rgba(255,255,255,0.3)] md:mb-8">
         {isCompleted ? (
           ""
         ) : (
           <>
-            Countdown before{" "}
-            <span className="text-color-gradient">registration closes</span>
+            <span className="drop-shadow-text">Countdown before </span><br className="md:hidden" />
+            <span className="text-color-gradient drop-shadow-[0_0_20px_rgba(232,81,2,0.8)]">registration closes</span>
           </>
         )}
       </h1>
