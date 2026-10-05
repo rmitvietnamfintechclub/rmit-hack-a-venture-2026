@@ -23,7 +23,9 @@ export const TimelineSection = () => {
       <div>
         <h1 className="text-4xl md:text-6xl text-center text-white font-bold mb-4">
           <span className="drop-shadow-text">Hack-A-Venture</span>{" "}
-          <span className="text-color-gradient drop-shadow-[0_0_20px_rgba(232,81,2,0.8)]">Timeline</span>
+          <span className="text-color-gradient drop-shadow-[0_0_20px_rgba(232,81,2,0.8)]">
+            Timeline
+          </span>
         </h1>
       </div>
       <RoundFormatTimeline />
@@ -213,7 +215,8 @@ const TimelineCard = ({ data, isEven }: { data: any; isEven: boolean }) => {
           <div className="bg-[#140505] border border-[#bf0701]/40 rounded-xl p-4 mt-4">
             <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-2 md:gap-0 mb-3 border-b border-white/10 pb-3">
               <h4 className="text-xs font-bold text-gray-400 uppercase tracking-widest">
-                Requirements & Deliverables
+                Requirements{" "}
+                <span className="max-md:hidden">& Deliverables</span>
               </h4>
               {data.target && (
                 <span className="text-[10px] md:text-xs font-bold text-[#e85102] bg-[#e85102]/10 px-2.5 py-1 rounded border border-[#e85102]/20">

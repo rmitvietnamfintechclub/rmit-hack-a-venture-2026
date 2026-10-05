@@ -71,11 +71,10 @@ export const PartnerSection = () => {
                 stroke={1.2}
                 className="w-[50px] h-[50px] md:w-[80px] md:h-[80px] text-[#e85102] relative z-10 drop-shadow-[0_0_15px_rgba(232,81,2,0.5)] group-hover:scale-110 transition-transform duration-500"
               />
-              {/* Bóng sáng phía sau Icon */}
               <div className="absolute inset-0 bg-[#bf0701] blur-[20px] md:blur-[30px] opacity-40 z-0 rounded-full"></div>
             </div>
 
-            <h3 className="text-xl md:text-4xl font-black tracking-widest uppercase text-color-gradient drop-shadow-md mb-2 md:mb-4">
+            <h3 className="text-lg md:text-4xl font-black tracking-widest uppercase text-color-gradient drop-shadow-md mb-2 md:mb-4">
               Building a Powerful Network
             </h3>
 
