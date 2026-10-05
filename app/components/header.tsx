@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { IconArrowUpRight } from "@tabler/icons-react";
 
 export const Header = () => {
@@ -118,7 +117,6 @@ const useDimensions = (ref: any) => {
   return dimensions.current;
 };
 
-// CẬP NHẬT UI: Làm nét vẽ thanh mảnh hơn (strokeWidth="1.5") để nút X nhìn sang trọng
 const Path = (props: any) => (
   <motion.path
     fill="transparent"
@@ -131,7 +129,10 @@ const Path = (props: any) => (
 
 const MobileNav = () => {
   const [hamburgerBarIsActive, setHamburgerBarIsActive] = useState(false);
+  
+  // Hàm toggle menu chung
   const toggle = () => setHamburgerBarIsActive(!hamburgerBarIsActive);
+  
   const containerRef = useRef(null);
   const { height } = useDimensions(containerRef);
 
@@ -142,12 +143,12 @@ const MobileNav = () => {
         animate={hamburgerBarIsActive ? "open" : "closed"}
         custom={height}
         ref={containerRef}
-        className="w-full h-[80px] bg-[#050101]/95 backdrop-blur-md border-b border-[#bf0701]/20 shadow-[0_4px_30px_rgba(0,0,0,0.5)] flex justify-between items-center pr-6"
+        className="w-full h-[80px] bg-[#050101]/95 backdrop-blur-md border-b border-[#bf0701]/20 shadow-[0_4px_30px_rgba(0,0,0,0.5)] flex justify-between items-center pr-4"
       >
         {/*---------- mobile logo ----------*/}
-        <a className="no-underline block ml-6" href="/">
+        <a className="no-underline block ml-4" href="/">
           <img
-            className="h-[3.25rem]"
+            className="h-[3rem]"
             src="/hackaventure-logo.png"
             alt="Mobile logo"
           />
@@ -157,10 +158,9 @@ const MobileNav = () => {
         <div
           title="Menu"
           onClick={toggle}
-          className="flex flex-col justify-center items-center cursor-pointer p-2"
+          className="flex flex-col justify-center items-center cursor-pointer p-3" // Tăng padding để dễ chạm hơn trên mobile
         >
-          {/* CẬP NHẬT UI: Thu nhỏ viewBox và kích thước icon để nó gọn gàng hơn */}
-          <svg width="30" height="30" viewBox="0 0 20 20">
+          <svg width="28" height="28" viewBox="0 0 20 20">
             <Path
               variants={{
                 closed: { d: "M 2 4 L 18 4" },
@@ -183,7 +183,12 @@ const MobileNav = () => {
             />
           </svg>
         </div>
-        <Navigation hamburgerBarIsActive={hamburgerBarIsActive} />
+        
+        {/* Truyền hàm toggle xuống Navigation để nó có quyền đóng menu */}
+        <Navigation 
+          hamburgerBarIsActive={hamburgerBarIsActive} 
+          closeMenu={() => setHamburgerBarIsActive(false)} 
+        />
       </motion.nav>
     </section>
   );
@@ -191,8 +196,10 @@ const MobileNav = () => {
 
 const Navigation = ({
   hamburgerBarIsActive,
+  closeMenu,
 }: {
   hamburgerBarIsActive: boolean;
+  closeMenu: () => void;
 }) => {
   const [menuVisible, setMenuVisible] = useState(false);
 
@@ -237,80 +244,76 @@ const Navigation = ({
     <section
       className={`absolute top-[80px] w-full h-[calc(100vh-80px)] mx-auto ${
         menuVisible ? "left-0" : "left-full hidden"
-      } bg-[#050202] backdrop-blur-xl border-t border-[#bf0701]/20 z-50 duration-500 text-[18px] font-medium`}
+      } bg-[#050202]/95 backdrop-blur-xl border-t border-[#bf0701]/20 z-50 duration-500 font-medium overflow-y-auto`}
     >
       <motion.ul
         variants={variantsNav}
-        className="mt-12 mx-auto w-[85%] flex flex-col items-center gap-[32px]"
+        className="mt-12 mx-auto w-[85%] flex flex-col items-center gap-[36px] pb-10"
       >
-        <motion.li
-          variants={variants}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
+        {/* Handbook */}
+        <motion.li variants={variants} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
           <a
             href="https://canva.link/m8fk2y9xm9lnud9"
             target="_blank"
-            className="flex items-center text-gray-200 hover:text-[#e85102] transition-colors"
+            className="flex items-center text-[20px] text-gray-200 hover:text-[#e85102] transition-colors py-2"
           >
             Handbook
-            <IconArrowUpRight
-              size={18}
-              stroke={2.5}
-              className="ml-1 opacity-70"
-            />
+            <IconArrowUpRight size={20} stroke={2.5} className="ml-1 opacity-70" />
           </a>
         </motion.li>
 
-        <motion.li
-          variants={variants}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
+        {/* Rules & Regs */}
+        <motion.li variants={variants} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
           <a
             href="https://canva.link/kxcxqtlug3qsw1c"
             target="_blank"
-            className="flex items-center text-gray-200 hover:text-[#e85102] transition-colors"
+            className="flex items-center text-[20px] text-gray-200 hover:text-[#e85102] transition-colors py-2"
           >
             Rules & Regulations
-            <IconArrowUpRight
-              size={18}
-              stroke={2.5}
-              className="ml-1 opacity-70"
-            />
+            <IconArrowUpRight size={20} stroke={2.5} className="ml-1 opacity-70" />
           </a>
         </motion.li>
 
-        <motion.li
-          variants={variants}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
+        <motion.li variants={variants} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+          <a
+            href="#hackaventure-sponsors"
+            onClick={closeMenu}
+            className="text-[20px] no-underline font-bold text-color-gradient block cursor-pointer py-2"
+          >
+            Sponsors & Partners
+          </a>
+        </motion.li>
+
+        {/* Contact Us */}
+        <motion.li variants={variants} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
           <a
             href="#footer"
-            className="no-underline font-semibold text-color-gradient block cursor-pointer"
+            onClick={closeMenu}
+            className="text-[20px] no-underline font-bold text-color-gradient block cursor-pointer py-2"
           >
             Contact Us
           </a>
         </motion.li>
 
+        {/* Nút CTA Register */}
         <motion.li
           variants={variants}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="w-full mt-4"
+          className="w-full mt-6"
         >
           <button
             style={{
               background: "linear-gradient(to right, #bf0701, #e85102)",
               boxShadow: "0 4px 15px rgba(232, 81, 2, 0.3)",
             }}
-            className="px-[24px] py-[12px] rounded-full text-white text-[18px] font-bold w-full max-w-[220px] mx-auto block"
+            className="px-[24px] py-[14px] rounded-full text-white text-[18px] font-bold w-full max-w-[250px] mx-auto block"
           >
             <a
               href=""
               target="_blank"
-              className="flex items-center justify-center gap-2 w-full"
+              onClick={closeMenu} // ĐÓNG MENU NGAY CẢ KHI NHẤN NÚT NÀY
+              className="flex items-center justify-center gap-2 w-full h-full"
             >
               Register Now
               <svg
@@ -321,11 +324,7 @@ const Navigation = ({
                 stroke="currentColor"
                 strokeWidth={3}
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M14 5l7 7m0 0l-7 7m7-7H3"
-                />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
               </svg>
             </a>
           </button>

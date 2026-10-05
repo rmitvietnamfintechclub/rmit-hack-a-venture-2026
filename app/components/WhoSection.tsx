@@ -60,11 +60,16 @@ export const WhoSection = () => {
               variants={swipeVariants}
               transition={{ duration: 0.6, delay: index * 0.15 }}
               className={clsx(
-                "w-full flex justify-center group",
-                isLastItem ? "col-span-2 md:col-span-1" : ""
+                "flex justify-center group",
+                isLastItem ? "col-span-2 md:col-span-1 w-full" : "w-full"
               )}
             >
-              <div className={clsx("w-full transition-transform duration-500 group-hover:-translate-y-2", isLastItem ? "w-[50%] md:w-full" : "")}>
+              <div 
+                className={clsx(
+                  "transition-transform duration-500 group-hover:-translate-y-2", 
+                  isLastItem ? "w-[calc(50%-8px)] md:w-full" : "w-full"
+                )}
+              >
                 <div className="p-1.5 md:p-2 border-2 border-dashed border-white/20 group-hover:border-[#e85102]/80 group-hover:shadow-[0_0_20px_rgba(232,81,2,0.3)] rounded-2xl md:rounded-3xl w-full transition-all duration-500 bg-[#0a0202]/50 backdrop-blur-sm">
                   <div className="relative w-full aspect-[3/4] md:aspect-auto overflow-hidden rounded-xl md:rounded-2xl">
                     <Image
@@ -72,7 +77,8 @@ export const WhoSection = () => {
                       alt={`Target Participant ${index + 1}`}
                       width={500}
                       height={700}
-                      className="w-full h-full object-contain md:object-cover group-hover:scale-105 transition-transform duration-700"
+                      // Dùng object-cover để lấp đầy khung hình mà không bị méo ảnh
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     />
                   </div>
                 </div>
