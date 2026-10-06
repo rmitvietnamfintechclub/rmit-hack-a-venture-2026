@@ -24,7 +24,7 @@ export const VideoRecapSection = () => {
   };
 
   return (
-    <section className="w-full flex flex-col items-center mt-12 md:mt-14 md:mb-12 md:px-20 max-md:px-6">
+    <section className="w-full flex flex-col items-center mt-12 md:mt-16 md:mb-12 md:px-20 max-md:px-6">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -41,7 +41,7 @@ export const VideoRecapSection = () => {
         initial={{ opacity: 0, scale: 0.9 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
-        className="flex gap-2 md:gap-4 mb-8 md:mb-12 bg-[#0a0202] p-1.5 md:p-2 rounded-full border border-[#bf0701]/30 shadow-[0_5px_20px_rgba(0,0,0,0.5)]"
+        className="flex gap-2 md:gap-4 mb-8 bg-[#0a0202] p-1.5 md:p-2 rounded-full border border-[#bf0701]/30 shadow-[0_5px_20px_rgba(0,0,0,0.5)]"
       >
         <button
           onClick={() => setActiveSeason("2024")}

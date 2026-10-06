@@ -4,22 +4,20 @@ import Image from "next/image";
 export const AboutUsSection = () => {
   return (
     <section className="w-full flex flex-col items-center justify-center px-6 md:px-20 mt-4 md:mt-12 mx-auto">
-      {/* <Image
+      <Image
         src="/key-visual.png"
         width={2000}
         height={1000}
         alt="Hack-A-Venture Key Visual"
         className="w-full h-auto rounded-lg"
-      /> */}
-      {/* ĐOẠN 1: Đã thay text-justify thành text-center md:text-justify */}
-      <div className="text-gray-300 leading-[1.6] md:leading-relaxed text-[15px] md:text-lg font-medium text-center md:text-justify w-full">
+      />
+      <div className="text-gray-300 leading-[1.6] md:leading-relaxed text-[15px] md:text-lg font-medium text-center md:text-justify w-full mt-8 md:mt-12">
         With Vietnam’s rapidly evolving digital economy,{" "}
         <span className="font-bold text-color-gradient">
           Hack-A-Venture 2026
         </span>{" "}
         aims to bridge technical capabilities with market and strategic thinking
         by having students leverage emerging technologies such as{" "}
-        {/* Xen kẽ highlight màu Trắng để không bị lóa mắt */}
         <span className="font-bold text-white">
           AI, Data Analytics, Blockchain, Distributed Systems, etc.
         </span>{" "}
@@ -46,7 +44,6 @@ export const AboutUsSection = () => {
         .
       </div>
 
-      {/* ĐOẠN 2: Tương tự đoạn 1 */}
       <div className="mt-5 md:mt-6 text-gray-300 leading-[1.6] md:leading-relaxed text-[15px] md:text-lg font-medium text-center md:text-justify w-full">
         Providing a{" "}
         <span className="font-bold text-color-gradient">
