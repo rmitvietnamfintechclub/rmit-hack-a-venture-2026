@@ -84,7 +84,7 @@ const LaptopNav = () => {
           }}
           className="px-[28px] py-[10px] rounded-full text-white font-bold tracking-wide transition-all duration-300 hover:scale-105 hover:shadow-[0_6px_25px_rgba(232,81,2,0.6)]"
         >
-          <a href="" target="_blank" className="flex items-center gap-2">
+          <a href="https://byvn.net/ZMu6" target="_blank" className="flex items-center gap-2">
             Register Now
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -310,9 +310,9 @@ const Navigation = ({
             className="px-[24px] py-[14px] rounded-full text-white text-[18px] font-bold w-full max-w-[250px] mx-auto block"
           >
             <a
-              href=""
+              href="https://byvn.net/ZMu6"
               target="_blank"
-              onClick={closeMenu} // ĐÓNG MENU NGAY CẢ KHI NHẤN NÚT NÀY
+              onClick={closeMenu}
               className="flex items-center justify-center gap-2 w-full h-full"
             >
               Register Now

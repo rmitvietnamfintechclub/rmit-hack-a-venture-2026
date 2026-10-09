@@ -105,7 +105,7 @@ export const HeroSection = () => {
                 className="w-[14vw] h-[48px] rounded-full justify-items-center flex justify-center items-center gap-2 font-semibold font-poppins transition-transform hover:scale-105"
                 style={primaryButtonStyle}
               >
-                <a href="" target="_blank">
+                <a href="https://byvn.net/ZMu6" target="_blank">
                   Register Now
                 </a>
                 <svg
@@ -187,7 +187,7 @@ export const HeroSection = () => {
             style={primaryButtonStyle}
           >
             <a
-              href=""
+              href="https://byvn.net/ZMu6"
               target="_blank"
               className="flex items-center gap-2 w-full justify-center"
             >
