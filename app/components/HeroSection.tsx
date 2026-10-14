@@ -93,7 +93,7 @@ export const HeroSection = () => {
                 style={secondaryButtonStyle}
               >
                 <a
-                  href="https://canva.link/m8fk2y9xm9lnud9"
+                  href="https://canva.link/3x7o5qsl7tiklcx"
                   target="_blank"
                   className="no-underline"
                 >
@@ -214,7 +214,7 @@ export const HeroSection = () => {
             style={secondaryButtonStyle}
           >
             <a
-              href="https://canva.link/m8fk2y9xm9lnud9"
+              href="https://canva.link/3x7o5qsl7tiklcx"
               target="_blank"
               className="w-full h-full flex items-center justify-center"
             >

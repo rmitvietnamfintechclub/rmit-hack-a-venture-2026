@@ -30,7 +30,7 @@ const LaptopNav = () => {
 
         <div className="flex items-center gap-8 xl:gap-12 font-medium tracking-wide">
           <a
-            href="https://canva.link/m8fk2y9xm9lnud9"
+            href="https://canva.link/3x7o5qsl7tiklcx"
             target="_blank"
             className="relative group flex items-center text-gray-200 hover:text-white transition-colors duration-300"
           >
@@ -253,7 +253,7 @@ const Navigation = ({
         {/* Handbook */}
         <motion.li variants={variants} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
           <a
-            href="https://canva.link/m8fk2y9xm9lnud9"
+            href="https://canva.link/3x7o5qsl7tiklcx"
             target="_blank"
             className="flex items-center text-[20px] text-gray-200 hover:text-[#e85102] transition-colors py-2"
           >
