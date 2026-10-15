@@ -51,6 +51,21 @@ const mentorsList: MentorInfo[] = [
     title: "Deputy Director & Director of Training Programs @CBS",
     image_path: "QuynhNguyen.png",
   },
+  {
+    name: "Thoai Nguyen",
+    title: "Founder/CEO @WorkFactory.AI",
+    image_path: "ThoaiNguyen.png",
+  },
+  {
+    name: "Hung Vu",
+    title: "Proprietary Investment Director @ACBS",
+    image_path: "HungVu.png",
+  },
+  {
+    name: "Anh Nguyen",
+    title: "Sales Manager @Savvycom",
+    image_path: "AnhNguyen.png",
+  },
 ];
 
 const MentorCard = ({ data }: { data: MentorInfo }) => {

@@ -66,6 +66,11 @@ const judgesList: JudgeInfo[] = [
     title: "RMIT Senior Lecturer in Economics",
     image_path: "TuanChu.png",
   },
+  {
+    name: "Dr. Haji Suleman",
+    title: "RMIT Lecturer in Digital Economy",
+    image_path: "HajiSuleman.png",
+  },
 ];
 
 const JudgeCard = ({ data }: { data: JudgeInfo }) => {
@@ -88,7 +93,6 @@ const JudgeCard = ({ data }: { data: JudgeInfo }) => {
       }}
       className="w-full h-full"
     >
-      {/* Khung thẻ chính - FIX MOBILE: Giảm bo góc từ 3xl xuống 2xl cho vừa vặn */}
       <div className="flex flex-col h-full bg-[#0a0202] border border-[#bf0701]/20 rounded-2xl md:rounded-3xl overflow-hidden group hover:shadow-[0_10px_30px_rgba(232,81,2,0.25)] hover:border-[#e85102]/60 transition-all duration-500">
         {/* Image Wrapper */}
         <div className="relative w-full aspect-[4/5] overflow-hidden bg-gradient-to-b from-[#1a0505] to-[#050101]">
@@ -135,7 +139,7 @@ const JudgeCard = ({ data }: { data: JudgeInfo }) => {
 
 export const JudgeSection = () => {
   return (
-    <div className="py-12 md:py-20 px-6 md:px-20 w-full mx-auto relative">
+    <div className="py-16 md:py-20 px-6 md:px-20 w-full mx-auto relative">
       {/* Hiệu ứng Background Phát Sáng */}
       <div className="absolute top-[5%] md:top-[10%] left-1/2 -translate-x-1/2 w-[80%] h-[200px] md:h-[300px] bg-[#bf0701] rounded-full blur-[100px] md:blur-[150px] opacity-10 pointer-events-none -z-10"></div>
 
