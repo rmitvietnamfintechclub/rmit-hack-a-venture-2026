@@ -14,7 +14,7 @@ const sponsorsData = {
   academic: [
     { name: "UniTrain", logo: "/sponsors/unitrain.png" },
     { name: "Aptech", logo: "/sponsors/aptech.png" },
-    { name: "CBS", logo: "/sponsors/cbs.png" },
+    // { name: "CBS", logo: "/sponsors/cbs.png" },
   ],
   media: [
     { name: "Advertising Vietnam", logo: "/sponsors/advertising-vietnam.png" },
@@ -91,7 +91,7 @@ export const PartnerSection = () => {
             <IconSparkles className="text-[#FFD700]" size={24} />
           </div>
 
-          <div className="relative z-10 w-full max-w-3xl p-[2px] rounded-3xl bg-gradient-to-r from-[#FFDF00] via-[#FDB931] to-[#D4AF37] shadow-[0_10px_40px_rgba(255,215,0,0.15)] group transition-transform duration-500 hover:scale-[1.02]">
+          <div className="relative z-10 w-full max-w-xl p-[2px] rounded-3xl bg-gradient-to-r from-[#FFDF00] via-[#FDB931] to-[#D4AF37] shadow-[0_10px_40px_rgba(255,215,0,0.15)] group transition-transform duration-500 hover:scale-[1.02]">
             <div className="bg-white rounded-[calc(1.5rem-2px)] p-8 md:p-14 flex items-center justify-center min-h-[16rem] md:min-h-[22rem]">
               <Image
                 src={sponsorsData.gold[0].logo}
@@ -114,7 +114,7 @@ export const PartnerSection = () => {
             Silver Sponsors
           </h3>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-4xl relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-3xl relative z-10">
             {sponsorsData.silver.map((sponsor, idx) => (
               <div
                 key={idx}
@@ -144,8 +144,7 @@ export const PartnerSection = () => {
             Academic Sponsors
           </h3>
 
-          {/* Chuyển grid thành 3 cột trên desktop (md:grid-cols-3) */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full max-w-5xl relative z-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full max-w-4xl relative z-10">
             {sponsorsData.academic.map((sponsor, idx) => (
               <div
                 key={idx}
@@ -173,7 +172,7 @@ export const PartnerSection = () => {
           <h3 className="text-base md:text-lg font-semibold text-gray-400 uppercase tracking-[0.2em] mb-6">
             Media Sponsors
           </h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 w-full max-w-6xl">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 w-full">
             {sponsorsData.media.map((sponsor, idx) => (
               <div
                 key={idx}
@@ -194,7 +193,7 @@ export const PartnerSection = () => {
         </motion.div>
 
         {/* --- STAY TUNED CONTINUOUS UPDATE --- */}
-        <motion.div variants={itemVariants} className="w-full mx-auto mt-4">
+        <motion.div variants={itemVariants} className="w-full mx-auto max-md:mt-4">
           <div className="relative p-[1px] rounded-full bg-gradient-to-r from-transparent via-[#bf0701] to-transparent">
             <div className="bg-[#080303] px-6 py-4 rounded-full flex flex-col md:flex-row items-center justify-center gap-3">
               <div className="flex items-center gap-2">

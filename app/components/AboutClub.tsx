@@ -166,7 +166,7 @@ export const AboutClub = () => {
 
         <div
           ref={ref}
-          className="grid grid-cols-2 md:grid-cols-3 gap-y-10 gap-x-4 md:gap-y-16 px-6 md:px-20 max-w-6xl mx-auto"
+          className="grid grid-cols-2 md:grid-cols-3 gap-y-10 gap-x-4 md:gap-y-16 px-6 md:px-20 mx-auto"
         >
           {statsData.map((stat, index) => (
             <div
@@ -211,7 +211,7 @@ export const AboutClub = () => {
         </motion.div>
 
         <div className="w-full overflow-x-auto pb-8 md:pb-0 hide-scrollbar px-6 md:px-20">
-          <div className="flex md:grid md:grid-cols-2 gap-4 md:gap-6 min-w-max md:min-w-0 mx-auto max-w-6xl">
+          <div className="flex md:grid md:grid-cols-2 gap-4 md:gap-6 min-w-max md:min-w-0 mx-auto">
             {[
               "/activities_1.png",
               "/activities_4.png",

@@ -48,7 +48,7 @@ export const WhoSection = () => {
         <span className="text-color-gradient drop-shadow-[0_0_20px_rgba(232,81,2,0.8)]">Participants</span>
       </motion.div>
 
-      <div className="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-8 w-full max-w-6xl justify-items-center">
+      <div className="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-8 w-full justify-items-center">
         {Array.from({ length: 5 }).map((_, index) => {
           const isLastItem = index === 4;
 

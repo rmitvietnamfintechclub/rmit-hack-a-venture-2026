@@ -52,7 +52,7 @@ export const PrizeSection = () => {
     <section
       ref={ref}
       id="hackaventure-prizes"
-      className="w-full flex flex-col items-center mt-16 md:mt-24 md:px-20 px-4 mb-20"
+      className="w-full flex flex-col items-center mt-20 md:mt-24 md:px-20 px-4 mb-20"
     >
       {/* --- HEADING SECTION --- */}
       <motion.div
@@ -71,11 +71,11 @@ export const PrizeSection = () => {
         {/* Banner Tổng Giải Thưởng (Wow Factor) */}
         <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-[#FFD700]/10 via-[#e85102]/20 to-[#bf0701]/10 border border-[#e85102]/40 text-white shadow-[0_0_20px_rgba(232,81,2,0.3)] backdrop-blur-sm animate-pulse">
           <IconStar size={20} className="text-[#FFD700]" />
-          <span className="text-sm md:text-lg font-medium tracking-wide">
+          <span className="text-sm md:text-lg font-medium tracking-normal md:tracking-wide">
             Total Prize Pool:
           </span>
           <span className="text-[#FFD700] text-lg md:text-xl font-black ml-1">
-            674,981,840 VND
+            652,291,840 VND
           </span>
           <IconStar size={20} className="text-[#FFD700]" />
         </div>
@@ -101,7 +101,7 @@ export const PrizeSection = () => {
                 className="absolute -right-10 -bottom-10 text-[#FFD700]/10 rotate-[-15deg] pointer-events-none"
               />
 
-              <div className="flex flex-col md:flex-row gap-6 md:items-center border-b border-white/10 pb-6 mb-6 relative z-10">
+              <div className="flex flex-row gap-6 md:items-center border-b border-white/10 pb-6 mb-2 md:mb-6 relative z-10">
                 <div className="p-4 bg-gradient-to-br from-[#FFD700]/20 to-[#e85102]/20 rounded-2xl w-fit">
                   <IconTrophy
                     size={48}
@@ -113,18 +113,18 @@ export const PrizeSection = () => {
                     Champion
                   </h3>
                   <p className="text-2xl font-bold text-[#FFD700]">
-                    251,458,440 VND
+                    249,858,440 VND
                   </p>
                 </div>
               </div>
 
               <ul className="grid md:grid-cols-2 gap-x-6 relative z-10">
                 <FeatureListItem text="04 Got It Vouchers (1,500,000 VND/Member)" />
+                <FeatureListItem text="04 FES Academy CFA Level 1 (100%)" />
+                <FeatureListItem text="04 Starttrain Business Intelligence Essentials (100%)" />
                 <FeatureListItem text="04 Big-O Coding Scholarships (100% for 1 Course)" />
-                <FeatureListItem text="04 Starttrain Excel for Business Analytics (100%)" />
                 <FeatureListItem text="04 ApTech Data & AI Program (90% - 3 Semesters)" />
                 <FeatureListItem text="04 UniTrain ACCA or Power BI Scholarships (80%)" />
-                <FeatureListItem text="04 CBS Business Analytics Vouchers (5,000,000 VND/Member)" />
               </ul>
             </div>
           </div>
@@ -152,14 +152,15 @@ export const PrizeSection = () => {
                     1st Runner-Up
                   </h3>
                   <p className="text-lg font-bold text-[#C0C0C0]">
-                    163,654,960 VND
+                    167,654,960 VND
                   </p>
                 </div>
               </div>
               <ul className="relative z-10">
                 <FeatureListItem text="04 Got It Vouchers (600,000 VND/Member)" />
-                <FeatureListItem text="04 Big-O Coding Scholarships (75% for 1 Course)" />
+                <FeatureListItem text="04 FES Academy CFA Level 1 (100%)" />
                 <FeatureListItem text="04 Starttrain Excel for Business Analytics (100%)" />
+                <FeatureListItem text="04 Big-O Coding Scholarships (75% for 1 Course)" />
                 <FeatureListItem text="04 ApTech Data & AI Program (90% - 2 Semesters)" />
                 <FeatureListItem text="04 UniTrain ACCA or Power BI Scholarships (70%)" />
               </ul>
@@ -186,12 +187,13 @@ export const PrizeSection = () => {
                     2nd Runner-Up
                   </h3>
                   <p className="text-lg font-bold text-[#CD7F32]">
-                    88,579,480 VND
+                    92,579,480 VND
                   </p>
                 </div>
               </div>
               <ul className="relative z-10">
                 <FeatureListItem text="04 Got It Vouchers (400,000 VND/Member)" />
+                <FeatureListItem text="04 FES Academy CFA Level 1 (100%)" />
                 <FeatureListItem text="04 Big-O Coding Scholarships (50% for 1 Course)" />
                 <FeatureListItem text="04 ApTech Data & AI Program (90% - 1 Semester)" />
                 <FeatureListItem text="04 UniTrain ACCA or Power BI Scholarships (60%)" />
@@ -200,52 +202,28 @@ export const PrizeSection = () => {
           </motion.div>
         </div>
 
-        {/* ROW 3: CONSOLIDATION & INDIVIDUAL */}
-        <div className="w-full grid md:grid-cols-2 gap-8">
-          {/* Consolidation */}
+        {/* ROW 3: CONSOLIDATION (Centered Full-ish Width) */}
+        <div className="w-full mx-auto">
           <motion.div
             variants={itemVariants}
             className="p-[1px] rounded-2xl bg-gradient-to-br from-gray-700 to-[#e85102]/50 hover:scale-[1.02] transition-transform duration-500"
           >
-            <div className="bg-[#0a0202] rounded-[calc(1rem-1px)] p-6 h-full relative overflow-hidden">
-              <div className="flex items-center gap-3 border-b border-white/10 pb-4 mb-4 relative z-10">
+            <div className="bg-[#0a0202] rounded-[calc(1rem-1px)] p-6 md:p-8 h-full relative overflow-hidden">
+              <div className="flex items-center gap-3 border-b border-white/10 pb-4 mb-2 md:mb-4 relative z-10">
                 <IconAward size={32} className="text-[#e85102]" />
                 <div>
-                  <h3 className="text-lg font-bold text-white uppercase">
+                  <h3 className="text-lg md:text-xl font-bold text-white uppercase">
                     Consolidation (x2)
                   </h3>
-                  <p className="text-base font-semibold text-gray-400">
-                    Total: 134,198,960 VND
+                  <p className="text-base font-semibold text-[#e85102]">
+                    Total: 142,198,960 VND
                   </p>
                 </div>
               </div>
-              <ul className="relative z-10">
-                <FeatureListItem text="08 ApTech Data & AI Program (90% - 1 Semester)" />
-                <FeatureListItem text="08 UniTrain ACCA or Power BI Scholarships (50%)" />
-              </ul>
-            </div>
-          </motion.div>
-
-          {/* Best Individual */}
-          <motion.div
-            variants={itemVariants}
-            className="p-[1px] rounded-2xl bg-gradient-to-br from-gray-700 to-[#e85102]/50 hover:scale-[1.02] transition-transform duration-500"
-          >
-            <div className="bg-[#0a0202] rounded-[calc(1rem-1px)] p-6 h-full relative overflow-hidden">
-              <div className="flex items-center gap-3 border-b border-white/10 pb-4 mb-4 relative z-10">
-                <IconStar size={32} className="text-[#FFD700]" />
-                <div>
-                  <h3 className="text-lg font-bold text-white uppercase">
-                    Best Individual Performer
-                  </h3>
-                  <p className="text-base font-semibold text-gray-400">
-                    37,090,000 VND
-                  </p>
-                </div>
-              </div>
-              <ul className="relative z-10">
-                <FeatureListItem text="01 CBS Business Analytics Scholarship (100%)" />
-                <FeatureListItem text="01 Starttrain Excel for Business Analytics (100%)" />
+              <ul className="grid md:grid-cols-2 gap-x-6 relative z-10">
+                <FeatureListItem text="04 FES Academy CFA Level 1 (100%)" />
+                <FeatureListItem text="04 ApTech Data & AI Program (90% - 1 Semester)" />
+                <FeatureListItem text="04 UniTrain ACCA or Power BI Scholarships (50%)" />
               </ul>
             </div>
           </motion.div>
