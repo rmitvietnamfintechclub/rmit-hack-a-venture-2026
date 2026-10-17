@@ -69,7 +69,7 @@ export const PrizeSection = () => {
         </h1>
 
         {/* Banner Tổng Giải Thưởng (Wow Factor) */}
-        <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-[#FFD700]/10 via-[#e85102]/20 to-[#bf0701]/10 border border-[#e85102]/40 text-white shadow-[0_0_20px_rgba(232,81,2,0.3)] backdrop-blur-sm animate-pulse">
+        <div className="inline-flex items-center gap-2 px-3 md:px-6 py-3 rounded-full bg-gradient-to-r from-[#FFD700]/10 via-[#e85102]/20 to-[#bf0701]/10 border border-[#e85102]/40 text-white shadow-[0_0_20px_rgba(232,81,2,0.3)] backdrop-blur-sm animate-pulse">
           <IconStar size={20} className="text-[#FFD700]" />
           <span className="text-sm md:text-lg font-medium tracking-normal md:tracking-wide">
             Total Prize Pool:
@@ -101,18 +101,18 @@ export const PrizeSection = () => {
                 className="absolute -right-10 -bottom-10 text-[#FFD700]/10 rotate-[-15deg] pointer-events-none"
               />
 
-              <div className="flex flex-row gap-6 md:items-center border-b border-white/10 pb-6 mb-2 md:mb-6 relative z-10">
-                <div className="p-4 bg-gradient-to-br from-[#FFD700]/20 to-[#e85102]/20 rounded-2xl w-fit">
+              <div className="flex flex-row gap-6 md:items-center border-b border-white/10 pb-6 md:mb-6 relative z-10">
+                <div className="p-3 bg-gradient-to-br from-[#FFD700]/20 to-[#e85102]/20 rounded-2xl w-fit">
                   <IconTrophy
                     size={48}
                     className="text-[#FFD700] drop-shadow-[0_0_15px_rgba(255,215,0,0.8)]"
                   />
                 </div>
                 <div>
-                  <h3 className="text-3xl md:text-4xl font-black text-white uppercase tracking-wider mb-2">
+                  <h3 className="text-2xl md:text-4xl font-black text-white uppercase tracking-wider mb-2">
                     Champion
                   </h3>
-                  <p className="text-2xl font-bold text-[#FFD700]">
+                  <p className="text-xl md:text-2xl font-bold text-[#FFD700]">
                     249,858,440 VND
                   </p>
                 </div>
