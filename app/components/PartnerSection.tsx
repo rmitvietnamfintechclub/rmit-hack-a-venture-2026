@@ -7,10 +7,14 @@ import Image from "next/image";
 
 const sponsorsData = {
   gold: [{ name: "Neax", logo: "/sponsors/neax.png" }],
-  silver: [{ name: "BigO", logo: "/sponsors/bigo.png" }],
+  silver: [
+    { name: "Big-O Coding", logo: "/sponsors/bigo.png" },
+    { name: "Start Train", logo: "/sponsors/starttrain.png" },
+  ],
   academic: [
     { name: "UniTrain", logo: "/sponsors/unitrain.png" },
     { name: "Aptech", logo: "/sponsors/aptech.png" },
+    { name: "CBS", logo: "/sponsors/cbs.png" },
   ],
   media: [
     { name: "Advertising Vietnam", logo: "/sponsors/advertising-vietnam.png" },
@@ -100,24 +104,33 @@ export const PartnerSection = () => {
           </div>
         </motion.div>
 
-        {/* --- SILVER SPONSOR --- */}
+        {/* --- SILVER SPONSORS --- */}
         <motion.div
           variants={itemVariants}
-          className="w-full flex flex-col items-center mb-16"
+          className="w-full flex flex-col items-center mb-16 relative"
         >
-          <h3 className="text-xl md:text-2xl font-bold text-[#E8E8E8] uppercase tracking-[0.2em] mb-6 drop-shadow-md">
-            Silver Sponsor
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[70%] h-full bg-[#C0C0C0] rounded-full blur-[90px] opacity-10 z-0"></div>
+          <h3 className="text-xl md:text-2xl font-bold text-[#E8E8E8] uppercase tracking-[0.2em] mb-6 drop-shadow-md relative z-10">
+            Silver Sponsors
           </h3>
-          <div className="relative z-10 w-full max-w-xl p-[2px] rounded-2xl bg-gradient-to-r from-[#C0C0C0] via-[#E8E8E8] to-[#A9A9A9] shadow-[0_8px_30px_rgba(192,192,192,0.1)] group transition-transform duration-500 hover:scale-[1.03]">
-            <div className="bg-white rounded-[calc(1rem-2px)] p-6 md:p-10 flex items-center justify-center min-h-[12rem] md:min-h-[16rem]">
-              <Image
-                src={sponsorsData.silver[0].logo}
-                alt={sponsorsData.silver[0].name}
-                width={400}
-                height={200}
-                className="w-full max-w-[12rem] md:max-w-[16rem] object-contain group-hover:scale-105 transition-transform duration-500"
-              />
-            </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-4xl relative z-10">
+            {sponsorsData.silver.map((sponsor, idx) => (
+              <div
+                key={idx}
+                className="h-full flex flex-col p-[2px] rounded-2xl bg-gradient-to-r from-[#C0C0C0] via-[#E8E8E8] to-[#A9A9A9] shadow-[0_8px_30px_rgba(192,192,192,0.1)] group transition-transform duration-500 hover:scale-[1.03]"
+              >
+                <div className="w-full flex-1 bg-white rounded-[calc(1rem-2px)] p-6 md:p-10 flex items-center justify-center min-h-[12rem] md:min-h-[16rem]">
+                  <Image
+                    src={sponsor.logo}
+                    alt={sponsor.name}
+                    width={400}
+                    height={200}
+                    className="w-full max-w-[12rem] md:max-w-[16rem] max-h-24 md:max-h-32 object-contain group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+              </div>
+            ))}
           </div>
         </motion.div>
 
@@ -130,19 +143,21 @@ export const PartnerSection = () => {
           <h3 className="text-lg md:text-xl font-bold text-[#e85102] uppercase tracking-[0.2em] mb-6 relative z-10">
             Academic Sponsors
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-4xl relative z-10">
+
+          {/* Chuyển grid thành 3 cột trên desktop (md:grid-cols-3) */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full max-w-5xl relative z-10">
             {sponsorsData.academic.map((sponsor, idx) => (
               <div
                 key={idx}
-                className="p-[1.5px] rounded-xl bg-gradient-to-br from-[#bf0701] to-[#e85102] group transition-transform duration-300 hover:-translate-y-1"
+                className="h-full flex flex-col p-[1.5px] rounded-xl bg-gradient-to-br from-[#bf0701] to-[#e85102] group transition-transform duration-300 hover:-translate-y-1"
               >
-                <div className="bg-white rounded-[calc(0.75rem-1.5px)] p-6 flex items-center justify-center h-32 md:h-40">
+                <div className="w-full flex-1 bg-white rounded-[calc(0.75rem-1.5px)] p-6 flex items-center justify-center h-28 md:h-36">
                   <Image
                     src={sponsor.logo}
                     alt={sponsor.name}
                     width={300}
                     height={150}
-                    className="w-full max-w-[10rem] object-contain group-hover:scale-105 transition-transform duration-300"
+                    className="w-full max-w-[8rem] md:max-w-[10rem] max-h-16 md:max-h-20 object-contain group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
               </div>
@@ -179,10 +194,7 @@ export const PartnerSection = () => {
         </motion.div>
 
         {/* --- STAY TUNED CONTINUOUS UPDATE --- */}
-        <motion.div
-          variants={itemVariants}
-          className="w-full mx-auto mt-4"
-        >
+        <motion.div variants={itemVariants} className="w-full mx-auto mt-4">
           <div className="relative p-[1px] rounded-full bg-gradient-to-r from-transparent via-[#bf0701] to-transparent">
             <div className="bg-[#080303] px-6 py-4 rounded-full flex flex-col md:flex-row items-center justify-center gap-3">
               <div className="flex items-center gap-2">
