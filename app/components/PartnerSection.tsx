@@ -14,7 +14,7 @@ const sponsorsData = {
   academic: [
     { name: "UniTrain", logo: "/sponsors/unitrain.png" },
     { name: "Aptech", logo: "/sponsors/aptech.png" },
-    // { name: "CBS", logo: "/sponsors/cbs.png" },
+    { name: "Fes Academy", logo: "/sponsors/fes-academy.png" },
   ],
   media: [
     { name: "Advertising Vietnam", logo: "/sponsors/advertising-vietnam.png" },
@@ -144,7 +144,7 @@ export const PartnerSection = () => {
             Academic Sponsors
           </h3>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full max-w-4xl relative z-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full max-w-4xl relative z-10">
             {sponsorsData.academic.map((sponsor, idx) => (
               <div
                 key={idx}

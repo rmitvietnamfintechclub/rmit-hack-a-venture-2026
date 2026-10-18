@@ -75,7 +75,7 @@ export const PrizeSection = () => {
             Total Prize Pool:
           </span>
           <span className="text-[#FFD700] text-lg md:text-xl font-black ml-1">
-            652,291,840 VND
+            817,291,840 VND
           </span>
           <IconStar size={20} className="text-[#FFD700]" />
         </div>
@@ -89,10 +89,7 @@ export const PrizeSection = () => {
         animate={controls}
       >
         {/* ROW 1: CHAMPION (Bigger, Center) */}
-        <motion.div
-          variants={itemVariants}
-          className="w-full mb-8 relative"
-        >
+        <motion.div variants={itemVariants} className="w-full mb-8 relative">
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-[#e85102] rounded-full blur-[100px] opacity-20 -z-10 animate-pulse"></div>
           <div className="p-[2px] rounded-3xl bg-gradient-to-br from-[#FFD700] via-[#e85102] to-[#bf0701] shadow-[0_10px_40px_rgba(232,81,2,0.2)] hover:scale-[1.02] transition-transform duration-500">
             <div className="bg-gradient-to-b from-[#1a0606] to-[#0a0202] rounded-[calc(1.5rem-2px)] p-6 md:p-10 relative overflow-hidden">
@@ -113,16 +110,17 @@ export const PrizeSection = () => {
                     Champion
                   </h3>
                   <p className="text-xl md:text-2xl font-bold text-[#FFD700]">
-                    249,858,440 VND
+                    316,258,440 VND
                   </p>
                 </div>
               </div>
 
               <ul className="grid md:grid-cols-2 gap-x-6 relative z-10">
                 <FeatureListItem text="04 Got It Vouchers (1,500,000 VND/Member)" />
-                <FeatureListItem text="04 FES Academy CFA Level 1 (100%)" />
                 <FeatureListItem text="04 Starttrain Business Intelligence Essentials (100%)" />
                 <FeatureListItem text="04 Big-O Coding Scholarships (100% for 1 Course)" />
+                <FeatureListItem text="04 FES Academy One-course CFA Level 1 (100%)" />
+                <FeatureListItem text="04 FES Academy Full-course CFA Level 1 (80%)" />
                 <FeatureListItem text="04 ApTech Data & AI Program (90% - 3 Semesters)" />
                 <FeatureListItem text="04 UniTrain ACCA or Power BI Scholarships (80%)" />
               </ul>
@@ -152,15 +150,16 @@ export const PrizeSection = () => {
                     1st Runner-Up
                   </h3>
                   <p className="text-lg font-bold text-[#C0C0C0]">
-                    167,654,960 VND
+                    202,454,960 VND
                   </p>
                 </div>
               </div>
               <ul className="relative z-10">
                 <FeatureListItem text="04 Got It Vouchers (600,000 VND/Member)" />
-                <FeatureListItem text="04 FES Academy CFA Level 1 (100%)" />
                 <FeatureListItem text="04 Starttrain Excel for Business Analytics (100%)" />
                 <FeatureListItem text="04 Big-O Coding Scholarships (75% for 1 Course)" />
+                <FeatureListItem text="04 FES Academy One-course CFA Level 1 (100%)" />
+                <FeatureListItem text="04 FES Academy Full-course CFA Level 1 (60%)" />
                 <FeatureListItem text="04 ApTech Data & AI Program (90% - 2 Semesters)" />
                 <FeatureListItem text="04 UniTrain ACCA or Power BI Scholarships (70%)" />
               </ul>
@@ -187,14 +186,15 @@ export const PrizeSection = () => {
                     2nd Runner-Up
                   </h3>
                   <p className="text-lg font-bold text-[#CD7F32]">
-                    92,579,480 VND
+                    121,579,480 VND
                   </p>
                 </div>
               </div>
               <ul className="relative z-10">
                 <FeatureListItem text="04 Got It Vouchers (400,000 VND/Member)" />
-                <FeatureListItem text="04 FES Academy CFA Level 1 (100%)" />
                 <FeatureListItem text="04 Big-O Coding Scholarships (50% for 1 Course)" />
+                <FeatureListItem text="04 FES Academy One-course CFA Level 1 (100%)" />
+                <FeatureListItem text="04 FES Academy Full-course CFA Level 1 (50%)" />
                 <FeatureListItem text="04 ApTech Data & AI Program (90% - 1 Semester)" />
                 <FeatureListItem text="04 UniTrain ACCA or Power BI Scholarships (60%)" />
               </ul>
@@ -216,12 +216,13 @@ export const PrizeSection = () => {
                     Consolidation (x2)
                   </h3>
                   <p className="text-base font-semibold text-[#e85102]">
-                    Total: 142,198,960 VND
+                    Total: 176,998,960 VND
                   </p>
                 </div>
               </div>
               <ul className="grid md:grid-cols-2 gap-x-6 relative z-10">
-                <FeatureListItem text="04 FES Academy CFA Level 1 (100%)" />
+                <FeatureListItem text="04 FES Academy One-course CFA Level 1 (100%)" />
+                <FeatureListItem text="04 FES Academy Full-course CFA Level 1 (30%)" />
                 <FeatureListItem text="04 ApTech Data & AI Program (90% - 1 Semester)" />
                 <FeatureListItem text="04 UniTrain ACCA or Power BI Scholarships (50%)" />
               </ul>
