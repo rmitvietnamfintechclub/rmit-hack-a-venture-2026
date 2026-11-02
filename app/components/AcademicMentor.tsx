@@ -28,7 +28,8 @@ const academicMentorsData: AcademicMentorInfo[] = [
   },
   {
     name: "Dr. Hoang Van",
-    title: "RMIT Lecturer in Information Technology",
+    title:
+      "RMIT Lecturer in Information Technology / Founder of Vangia Innovations (vangia.dev)",
     image_path: "HoangVan.png",
   },
 ];
@@ -65,7 +66,6 @@ const AcademicMentorCard = ({
     >
       {/* FIX KHUNG THẺ: Luôn luôn là flex-row (nằm ngang) cho cả Mobile lẫn Desktop */}
       <div className="flex flex-row h-full bg-[#0a0202]/90 backdrop-blur-sm border border-white/5 border-l-[4px] md:border-l-[6px] border-l-[#bf0701] rounded-xl md:rounded-2xl overflow-hidden group hover:border-l-[#e85102] hover:bg-[#140505] hover:shadow-[0_10px_30px_rgba(232,81,2,0.15)] transition-all duration-300">
-        
         {/* FIX ẢNH: Ép chiều rộng cứng (w-[110px] cho Mobile, w-[180px] cho Desktop) để giữ tỷ lệ Portrait */}
         <div className="w-[110px] md:w-[180px] shrink-0 relative overflow-hidden bg-gradient-to-b from-[#1a0505] to-[#050101]">
           <Image
@@ -82,12 +82,6 @@ const AcademicMentorCard = ({
 
         {/* PHẦN THÔNG TIN (Bên phải) */}
         <div className="flex flex-col justify-center flex-grow p-4 md:p-8 relative">
-          
-          {/* Watermark Logo RMIT nằm chìm tinh tế */}
-          <div className="absolute right-2 bottom-0 md:right-4 md:bottom-2 text-[40px] md:text-[60px] font-black text-white/5 pointer-events-none select-none italic tracking-tighter group-hover:text-white/10 transition-colors duration-500">
-            RMIT
-          </div>
-
           <h3 className="text-base md:text-2xl font-bold text-white mb-1 md:mb-2 relative z-10 leading-tight">
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-300 group-hover:from-[#ffb09e] group-hover:to-[#e85102] transition-all duration-300">
               {data.name}
@@ -110,7 +104,8 @@ export const AcademicMentor = () => {
 
       <div className="text-center mb-8 md:mb-16 px-5">
         <h1 className="text-4xl md:text-6xl text-white font-bold mb-3 md:mb-4 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
-          <span className="drop-shadow-text">Hack-A-Venture</span> <br className="md:hidden" />
+          <span className="drop-shadow-text">Hack-A-Venture</span>{" "}
+          <br className="md:hidden" />
           <span className="text-color-gradient drop-shadow-[0_0_20px_rgba(232,81,2,0.8)]">
             Academic Mentors
           </span>
